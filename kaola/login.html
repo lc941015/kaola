@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登陆</title>
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+		$(function(){
+			$('#userName').focus(function(){
+				$(this).parent().css({outline:'1px solid #4aafe9'});
+				$('.user i').show();
+			})
+			
+			$('#userName').blur(function(){
+				$(this).parent().css({outline:'medium'});
+				$('.user i').hide();
+			})
+			$('#passWord').focus(function(){
+				$(this).parent().css({outline:'1px solid #4aafe9'});
+				$('.pass i').show();
+			})
+			
+			$('#passWord').blur(function(){
+				$(this).parent().css({outline:'medium'});
+				$('.pass i').hide();
+			})
+			
+			
+			$('.user i').click(function(){
+				console.info(12343);
+				$('#userName').val('');
+			})
+			$('.pass i').click(function(){
+				$('#passWord').val('');
+			})
+			var a=1;
+			$('#auto').click(function(){
+				$('#auto:hidden')
+				if(a){
+					$('#auto img').show();
+					a=0;
+				}else {
+					$('#auto img').hide();
+					a=1;
+				}
+			})
+			$('.btn').click(function(){
+					var uname = $('#userName').val();
+					var pass=$('#passWord').val();
+					
+					
+					if(uname=='') {
+						$('#error').text('用户名不能为空')
+						$('#error').show();
+						return;
+					}
+					else if(pass=='') {
+						$('#error').text('密码不能为空')
+						$('#error').show();
+						return;
+					}else{
+						$('#error').hide();
+						setCookie("uName",uname,1000*60*60);
+						window.location = 'index.html';
+					}
+			})
+			
+
+			
+		})
+		
+	</script>
+	</head>
+
+	<body>
+		<div class="headBanner">
+			<a href="#"><img src="img/login/headBanner.png" /></a>
+		</div>
+		<div class="head">
+			<a href="index.html"><img src="img/index/logo1.png" alt="" /></a>
+			<img class="right" src="img/login/head3.png" />
+		</div>
+		<div class="contentBg">
+			<div class="content">
+				<div class="login">
+					<div class="left">
+						<h3>登陆邮箱账号<a href="register.html">免费注册</a></h3>
+						<form action="" method="post">
+							<p class="user">
+								<label></label>
+								<input type="text" name="userName" id="userName" placeholder="如name@example.com" />
+								<i class="xx"></i>
+							</p>
+							<p class="pass">
+								<label></label>
+								<input type="password" name="passWord" id="passWord" placeholder="请输入密码" />
+								<i class="xx"></i>
+							</p>
+							<p id="error">账号或密码错误</p>
+							<p class="forget"><i class="checkBox" id="auto"><img style="display: none;position: absolute;" src="img/login/duigou.png"/></i>
+								<span>
+							两周内自动登陆
+							</span>
+								<a href="#">忘记密码？</a>
+							</p>
+							<a class="btn">登陆</a>
+						</form>
+						<ul>
+							<li class="zfb"><a href="#">支付宝支付</a></li>
+							<li class="wb"><a href="#">微博登陆</a></li>
+							<li class="qq"><a href="#">QQ登陆</a></li>
+						</ul>
+					</div>
+					<div class="right">
+						<dl>
+							<dt><img src="img/index/ewm1.jpg"/></dt>
+							<dd>
+								<p>下载网易考拉海淘<b>APP</b></p>
+								<p>首单立减<b>8</b>元</p>
+							</dd>
+						</dl>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<ul>
+				<li><a style="padding-left: 0;" href="#">About Netease</a></li>
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">联系方法</a></li>
+				<li><a href="#">招聘信息</a></li>
+				<li><a href="#">客户服务</a></li>
+				<li><a href="#">隐私政策</a></li>
+				<li><a style="border: none;" href="#">网络营销</a></li>
+			</ul>
+			<p>增值电信业务经营许可证：浙B-20090185-3 网易公司版权所有 &copy;1996-2015</p>
+			<img src="img/index/bottom1.png"/>
+		</div>
+	</body>
+
+</html>

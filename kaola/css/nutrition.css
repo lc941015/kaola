@@ -1,0 +1,219 @@
+
+
+
+.nutrition {
+	height: 436px;
+	width: 1090px;
+	margin: 0 auto;
+	clear: both;
+	margin-bottom: 24px;
+}
+
+.nutrition h4 p {
+	float: left;
+	height: 56px;
+	line-height: 56px;
+	font-size: 22px;
+}
+
+.nutrition h4 span {
+	margin-left: 10px;
+	font-weight: normal;
+	color: #999999;
+}
+
+.nutrition h4 ul {
+	float: left;
+	height: 56px;
+	line-height: 63px;
+}
+
+.nutrition h4 ul li {
+	float: left;
+	font-weight: normal;
+}
+
+.nutrition h4 ul li a {
+	color: #666666;
+	padding: 0 12px;
+	border-right: 1px solid #EAEAEA;
+}
+
+.nutrition h4 a:hover {
+	text-decoration: underline;
+}
+
+.nutrition h4 ul li .color {
+	color: #e31436;
+}
+
+.nutrition h4 .more {
+	font-weight: normal;
+	float: right;
+	height: 56px;
+	line-height: 56px;
+}
+
+.nutrition_main {
+	clear: both;
+	width: 1090px;
+	height: 440px;
+	margin: 0 auto;
+	border-top: 2px solid #333333;
+	background: #FFFFFF;
+}
+
+.nutrition_left {
+	background: url(../img/index/nutrition1.jpg);
+	height: 440px;
+	width: 246px;
+	cursor: pointer;
+	float: left;
+	position: relative;
+}
+
+.nutrition_left .nutrition_left_tip {
+	position: absolute;
+	width: 200px;
+	height: 134px;
+	top: 22px;
+	left: 24px;
+}
+
+.nutrition_left .nutrition_left_tip a {
+	width: 60px;
+	height: 60px;
+	float: left;
+	background: #FFFFFF;
+	text-align: center;
+	line-height: 60px;
+	border-radius: 50%;
+	margin: 4px;
+}
+.nutrition_left .nutrition_left_tip a:hover{
+	color: #E34C5A;
+	background: #dee9ca;
+}
+.nutrition_middle {
+	width: 600px;
+	height: 440px;
+	float: left;
+}
+
+.nutrition_middle dl {
+	float: left;
+	width: 299px;
+	height: 219px;
+	border-right: 1px solid #EAEAEA;
+	border-bottom: 1px solid #EAEAEA;
+	text-align: center;
+}
+
+.nutrition_middle dl dt {
+	padding-top: 12px;
+	height: 62px;
+}
+
+.nutrition_middle dl dt h3 {
+	height: 32px;
+	line-height: 32px;
+	font-size: 16px;
+}
+
+.nutrition_middle dl dt h5 {
+	font-weight: normal;
+	color: #666666;
+}
+
+.nutrition_middle dl dd {
+	height: 144px;
+}
+
+.nutrition_right {
+	height: 439px;
+	width: 243px;
+	float: left;
+	border-right: 1px solid #EAEAEA;
+	border-bottom: 1px solid #EAEAEA;
+}
+
+.nutrition_right h3 {
+	height: 24px;
+	line-height: 24px;
+	font-size: 16px;
+	margin-top: 16px;
+	margin-left: 16px;
+}
+
+.swiper-container {
+	height: 394px;
+	width: 204px;
+	margin: 0 auto;
+}
+
+.nutrition_right dl {
+	height: 95px;
+	width: 204px;
+	border-bottom: 1px dotted #EAEAEA;
+}
+
+.nutrition_right dl dt {
+	float: left;
+	width: 84px;
+	height: 84px;
+	padding-top: 12px;
+}
+
+.nutrition_right dl dd {
+	float: left;
+	width: 120px;
+	height: 84px;
+	padding-top: 12px;
+}
+
+.nutrition_right dl dd h5 {
+	color: #666666;
+	font-weight: normal;
+}
+
+.nutrition_right dl dd p {
+	margin-top: 14px;
+}
+
+.nutrition_right dl dd p b {
+	font-size: 13px;
+	color: #e31436;
+}
+
+.nutrition_right dl dd p span {
+	margin-left: 8px;
+	color: #a5a5c2;
+	text-decoration: line-through;
+}
+
+.nutrition_right dl a:hover {
+	text-decoration: underline;
+}
+
+.nutrition_hot {
+	height: 110px;
+	width: 1090px;
+	margin: 10px auto;
+	outline: 1px solid #EAEAEA;
+	line-height: 110px;
+	background: #FFFFFF;
+}
+.nutrition_hot h4{
+	font-size: 14px;
+	height: 110px;
+	width: 120px;
+	text-align: center;
+	float: left;
+}
+.nutrition_hot ul{
+	float: left;
+}
+.nutrition_hot ul li{
+	float: left;
+	padding: 0 6px;
+}

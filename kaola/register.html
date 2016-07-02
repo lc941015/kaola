@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="css/register.css" />
+		<style type="text/css">
+			#rightPass b{
+			position: absolute;
+		    display: inline-block;
+		    width: 194px;
+		    height: 8px;
+		    background: url(img/login/icon.png) 1px -89px no-repeat;
+		    top: 29px;
+		    left: 18px;
+		}
+
+		</style>
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				//选择邮箱地址功能
+				$('#select').click(function() {
+					$('.select_main').toggle();
+					$('.select_main li').hover(function() {
+						$(this).css({
+							background: '#70a8e4'
+						})
+						$(this).click(function() {
+							var txt = $(this).text();
+							$('#select>b').text(txt);
+							$('.select_main').hide();
+						})
+					}, function() {
+						$(this).css({
+							background: '#fff'
+						})
+					})
+				})
+				$('#email').focus(function() {
+					$('.tip').hide();
+					$('#errorEmail').hide();
+					$('#rightEmail').hide();
+					$('.advise').hide();
+					$('#tipEmail').show();
+				})
+				$('#passWord').focus(function() {
+					$('.tip').hide();
+					$('#errorPass').hide();
+					$('#rightPass').hide();
+					$('#tipPass').show();
+					$('.advise').show();
+				})
+				$('#confirm').focus(function() {
+					$('.tip').hide();
+					$('#errorConfirm').hide();
+					$('#rightConfirm').hide();
+					$('.advise').hide();
+					$('#tipConfirm').show();
+				})
+				$('#check').focus(function() {
+					$('.tip').hide();
+					$('#errorCheck').hide();
+					$('#rightCheck').hide();
+					$('.advise').hide();
+					$('#tipCheck').show();
+				})
+				$('#email').blur(function() {
+					$('#tipEmail').hide();
+					var user = $(this).val();
+					var userReg = /^[a-zA-Z][a-zA-Z0-9_]{5,18}$/;
+					if (user == '') {
+						$('#errorEmail span').html('请输入或选择你的新邮件地址。');
+						$('#errorEmail').show();
+					} else if (!userReg.test(user)) {
+						$('#errorEmail span').html('只允许6到18个字符。');
+						$('#errorEmail').show();
+					} else {
+						$('#rightEmail').show();
+					}
+				})
+				$('#passWord').blur(function() {
+					$('#tipPass').hide();
+					var pass = $(this).val();
+					var passReg = /^[a-zA-Z0-9$._/@#%<>]{6,16}$/;
+					//实现密码强度验证
+					var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$", "g");
+					var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+					var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+					if (pass == '') {
+						$('#errorPass span').html('请设置你的登录密码。');
+						$('#errorPass').show();
+					} else if (!passReg.test(pass)) {
+						$('#errorPass span').html('请输入6到16个字符的密码。');
+						$('#errorPass').show()
+					} else if(strongRegex.test(pass)){
+						$('#rightPass span').html('强：请牢记您的密码');
+						$('#rightPass b').css({background:"url(img/login/icon.png) 1px -110px no-repeat"});
+						$('#rightPass').show();
+					}else if(mediumRegex.test(pass)){
+						$('#rightPass span').html('中强：试试字母、数字、符号混搭');
+						$('#rightPass b').css({background:"url(img/login/icon.png) 1px -100px no-repeat"});
+						$('#rightPass').show();
+					}else if(enoughRegex.test(pass)){
+						$('#rightPass span').html('弱：试试字母、数字、符号混搭');
+						$('#rightPass b').css({background:"url(img/login/icon.png) 1px -90px no-repeat",
+												});
+						$('#rightPass').show();
+					}
+				})
+				$('#confirm').blur(function() {
+						$('#tipConfirm').hide();
+						var pass = $('#passWord').val();
+						var pass2 = $(this).val();
+						if (pass2 == '') {
+							$('#tipConfirm').show();
+						} else if (pass != pass2) {
+							$('#errorConfirm span').html('两次输入的密码不一致。');
+							$('#errorConfirm').show();
+						} else {
+							$('#rightConfirm').show();
+						}
+					})
+					//验证码相关
+				var yzmI = 0;
+				$('#refresh,#yzm').click(function() {
+					yzmI = parseInt(Math.random() * 10);
+					$('#yzm').attr('src', "img/login/yzm" + yzmI + ".jpg")
+				})
+				var checkArr = ["ukn5st", "4tbpx5", "sn5ddg", "yqmdmd", '4tbpx5', "u66xnf", "bnwkw7", "merdqd", "obvccd", "d4782e"];
+				$('#check').blur(function() {
+					var val = $(this).val().toLowerCase();
+					$('#tipCheck').hide();
+					if (val.length == 6) {
+						if (val == checkArr[yzmI]) {
+							$('#rightCheck').show();
+						} else {
+							$('#errorCheck span').html('请输入正确的验证码');
+							$('#errorCheck').show();
+						}
+					} else {
+						$('#errorCheck span').html('请输入6位的验证码');
+						$('#errorCheck').show()
+					}
+				})
+				$('#register').click(function(){
+					$('#email,#passWord,#confirm,#check').trigger('blur');
+					if($('.trueE').is(':visible')){
+						
+						window.location='login.html';
+					}else{
+					return false;
+					}
+					
+				})
+				$('#checked').click(function(e) {
+					console.info('进入');
+					//					disable
+					if ($('#checked').is(':checked')) {
+						$('#register').css({
+							background: '#69b3f2',
+							color: '#fff',
+						})
+					} else {
+						$('#register').css({
+							background: '#eeeeee',
+							color: '#717171',
+						})
+						$('#register').attr('type', 'button');
+					}
+				})
+			})
+		</script>
+
+	</head>
+
+	<body>
+		<div class="headBg">
+			<div class="head">
+				<img src="img/login/logo2.png" />
+				<span>注册</span>
+			</div>
+
+		</div>
+		<div class="content">
+			<div class="main">
+				<p class="title"><span class="selected">邮箱账号注册</span><span>VIP邮箱注册</span></p>
+				<div class="left">
+					<form >
+						<div>
+							<input type="text" name="email" id="email" placeholder="新邮箱地址" />
+							<p id="select"><b>@163.com</b><span class="arrows">
+							<img src="img/login/jiantou.png"/>
+							</span>
+								<ul class="select_main">
+									<li>@163.com</li>
+									<li>@126.com</li>
+									<li>@yeah.net</li>
+									<li>@vip.163.com</li>
+									<li>@vip.126.com</li>
+									<li>@188.com</li>
+								</ul>
+							</p>
+							<p class="true trueE" id="rightEmail"></p>
+							<p id="errorEmail"><i></i><span>新邮件地址太短.只允许6到18个字符</span></p>
+							<p id="tipEmail" class="tip"><i></i><span>6到18个字符，包括字母、数字和下划线，以字母开头，字母或数字结尾</span></p>
+						</div>
+						<a class="common" href="#">常用邮箱注册</a>
+						<div>
+							<div class="advise">
+								<h4>网易用户中心的程序猿们建议您：</h4>
+								<ul>
+									<li><i>1</i>避免使用常用词汇（比如521），生日或手机号做密码</li>
+									<li><i>2</i>建议加上些谐音，特殊字符或其他的隐私信息，亲妈都不告诉！</li>
+									<li><i>3</i>建议您不要“一码平川”，给网易一个不一样的密码吧</li>
+									<li><i>4</i>最重要的，记得来安全中心完善安全设置（笑）！</li>
+								</ul>
+							</div>
+							<input type="password" name="passWord" id="passWord" placeholder="设置密码" />
+							<p id='rightPass' class="trueE"><i></i><span>强：请牢记您的密码</span><b></b></p>
+							<p id="tipPass" class="tip"><i></i><span>6到16个字符，区分大小写</span></p>
+							<p id="errorPass" class="tipE"><i></i><span>请输入6到16个字符的密码。</span>
+							</p>
+						</div>
+						<div>
+							<input type="password" name="confirm" id="confirm" placeholder="确认密码" />
+							<p class="true trueE" id="rightConfirm"></p>
+							
+							<p id="tipConfirm" class="tip"><i></i><span>再次输入你确认的密码</span></p>
+							<p id="errorConfirm" class="tipE"><i></i><span>两次输入的密码不一致。</span></p>
+
+						</div>
+						<div>
+							<p class="check">
+								<input type="text" name="check" id="check" placeholder="验证码" /><img id="yzm" src="img/login/yzm0.jpg" /><span id="refresh"></span></p>
+							<p class="true trueE" id="rightCheck"></p>
+							<p id="tipCheck" class="tip"><i></i><span>不区分大小写</span></p>
+							<p id="errorCheck" class="tipE"><i></i><span>请输入正确的验证码</span></p>
+						</div>
+
+						<button type="button" id="register">立即注册</button>
+						<div class="agree">
+							<input type="checkbox" name="checked" id="checked" checked/>
+							<p>我同意“<a href="#">服务条款</a>”和“<a href="#">网络游戏用户隐私权保护和个人信息利用政策</a>”</p>
+						</div>
+					</form>
+
+				</div>
+				<div class="right">
+					<img src="img/login/rightjpg.jpg" />
+					<a href="#"><img src="img/login/download.jpg" /></a>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<ul>
+				<li><a style="padding-left: 0;" href="#">About Netease</a></li>
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">联系方法</a></li>
+				<li><a href="#">招聘信息</a></li>
+				<li><a href="#">客户服务</a></li>
+				<li><a href="#">隐私政策</a></li>
+				<li><a style="border: none;" href="#">网络营销</a></li>
+			</ul>
+			<p>增值电信业务经营许可证：浙B-20090185-3 网易公司版权所有 &copy;1996-2015</p>
+			<img src="img/index/bottom1.png" />
+		</div>
+
+	</body>
+
+</html>

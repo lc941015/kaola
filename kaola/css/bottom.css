@@ -1,0 +1,196 @@
+.footer {
+	width: 100%;
+	border-top: 1px solid #eaeaea;
+	background: #FFFFFF;
+	clear: both;
+	margin-top: 20px;
+}
+
+.footer .map {
+	width: 1090px;
+	margin: 0 auto;
+}
+
+.footer .map .map_top {
+	height: 87px;
+	border-bottom: 1px solid #eaeaea;
+	margin-top: 38px;
+}
+
+.footer .map .map_top dl {
+	float: left;
+	margin-right: 96px;
+	padding-left: 58px;
+	height: 54px;
+}
+
+.footer .map .map_top dl dt {
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333333;
+}
+
+.footer .map .map_top dl dd {
+	height: 26px;
+	line-height: 26px;
+}
+
+.footer .map .map_bottom {
+	width: 1090px;
+	height: 230px;
+	padding-top: 40px;
+	margin: 0 auto;
+}
+
+.footer .map .map_bottom_left {
+	width: 200px;
+	float: left;
+}
+
+.footer .map .map_bottom_left img {
+	width: 200px;
+	height: 50px;
+	display: block;
+}
+
+.footer .map .map_bottom_left ul {
+	padding-top: 16px;
+}
+
+.footer .map .map_bottom_left li {
+	float: left;
+	padding-right: 14px;
+	height: 36px;
+	line-height: 34px;
+}
+
+.footer .map .map_bottom_left li a {
+	display: block;
+	width: 36px;
+	height: 36px;
+}
+
+.footer .map a:hover {
+	text-decoration: underline;
+}
+
+.footer .map .map_bottom_left .wb {
+	background: url(../img/index/icon1.png) -750px -68px no-repeat;
+}
+
+.footer .map .map_bottom_left .wb:hover {
+	background: url(../img/index/icon1.png) -750px -108px no-repeat;
+}
+
+.footer .map .map_bottom_left .wx {
+	background: url(../img/index/icon1.png) -794px -68px no-repeat;
+}
+
+.footer .map .map_bottom_left .wx:hover {
+	background: url(../img/index/icon1.png) -794px -108px no-repeat;
+}
+
+.footer .map .map_bottom_left .yx {
+	background: url(../img/index/icon1.png) -837px -68px no-repeat;
+}
+
+.footer .map .map_bottom_left .yx:hover {
+	background: url(../img/index/icon1.png) -837px -108px no-repeat;
+}
+
+.footer .map .map_bottom_main {
+	float: left;
+	width: 620px;
+	margin-left: 34px;
+}
+
+.footer .map .map_bottom_main dl {
+	float: left;
+	width: 125px;
+	height: 130px;
+	border-left: 1px solid #eaeaea;
+}
+
+.footer .map .map_bottom_main dl dt {
+	font-size: 14px;
+	font-weight: bold;
+	padding-left: 14px;
+	padding-bottom: 12px;
+}
+
+.footer .map .map_bottom_main dl dd {
+	padding-left: 14px;
+	height: 24px;
+	line-height: 24px;
+}
+
+.footer .map .map_bottom_right {
+	float: right;
+	width: 230px;
+}
+
+.footer .map .map_bottom_right dl {
+	float: left;
+	width: 110px;
+}
+
+.footer .map .map_bottom_right dt {
+	width: 110px;
+	height: 110px;
+}
+
+.footer .map .map_bottom_right dd {
+	text-align: center;
+}
+
+.footer .bottomBg {
+	background: #333333;
+	width: 100%;
+	height: 128px;
+	clear: both;
+}
+
+.footer .bottom {
+	padding-top: 22px;
+	width: 656px;
+	margin: 0 auto;
+	color: #c2c2c2;
+}
+
+.footer .bottom a {
+	color: #c2c2c2;
+}
+
+.footer .bottom a:hover {
+	text-decoration: underline;
+}
+
+.footer .bottom p {
+	margin-left: 12px;
+}
+
+.footer .bottom li {
+	float: left;
+	color: #c2c2c2;
+	padding-right: 22px;
+	height: 24px;
+	line-height: 24px;
+}
+
+.footer .bottom .img {
+	padding-top: 12px;
+	clear: both;
+	padding-left: 0;
+	
+}
+
+.footer .bottom .img span {
+	display: block;
+	width: 130px;
+	margin: 0 auto;
+}
+.footer .bottom .img span img{
+	display: inline-block;
+}

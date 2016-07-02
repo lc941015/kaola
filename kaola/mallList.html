@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mallList.css" />
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var baseUrl = "http://10.11.55.139:3003";
+			var size = 12;
+			var classId;
+			var sizeId;
+			var styleId;
+			var pageCount;
+			var page;
+			var list=[];
+//			var url = window.location.origin + window.location.pathname;	
+			function getList(index, size) {
+				var classIndex;
+				var styleIndex;
+				var sizeIndex;
+				if (classId != undefined) {
+					classIndex = classId;
+				}
+				if (styleId != undefined) {
+					styleIndex = styleId;
+				}
+				if (sizeId != undefined) {
+					sizeIndex = sizeId;
+				}
+				$.get(baseUrl + '/mall/list', {
+					index: index,
+					size: size,
+					mall_class: classIndex,
+					mall_size: sizeIndex,
+					mall_style: styleIndex,
+				}).success(function(e) {
+					//每次设置数据时清空
+					$('.mall_list').html('');
+					//将返回的数组数据保存到一个变量中
+					var data = e.data;
+					//求得一共几页数据
+					pageCount = Math.ceil(e.count / 8);
+					if ($('.pageMain').children().length != pageCount) {
+						$('.pageMain').empty();
+						for (var i = 0; i < pageCount; i++) {
+							$('.pageMain').append('<a class="page">' + (i + 1) + '</a>');
+						}
+					}
+					$.each(data, function(i, val) {
+						var dl = '<dl class = "every_mall">' + ' <dt> <img src ="' + baseUrl + val.mall_imgUrl + '"/ ><span class="collect"></span></dt>' + '<dd>' + '<h3 class = "price"><span>￥</span>' + val.mall_price + '<i><b>' + val.mall_count + '</b > 件 </i></h3>' + '<h5 class = "name" > <a href = "details.html"> ' + val.mall_name + '</a></h5>' +'<a class="join_car">加入购物车</a>'+ '</dd>' + '</dl>'
+						$('.mall_list').append(dl);
+					});
+					$('.mall_title b').text(e.count);
+					$('.pageMain').children().eq(index - 1).addClass('change').siblings().removeClass('change');
+					var className=$('#class .class_change').text();
+					var styleName=$('#style .class_change').text();
+					var sizeName=$('#size .class_change').text();
+					if(!className&&!styleName&&!sizeName){
+						$('.menu').html('“衣服”');
+					}
+					else{
+						$('.menu').html('<span>'+className+'</span><span>'+styleName+'</span><span>'+sizeName+'</span>')
+					}
+					list=e.data;
+				});
+			}
+			$(function() {
+				//导入ajax head 插入到页面中
+				$.get('head.html', function(e) {
+					$('body').prepend(e);
+				});
+				$.get('bottom.html', function(e) {
+					$('body').append(e);
+				});
+				//						pageCount= 
+				
+				//						console.info(pageCount);
+				$('.pageMain').on('click', '.page', function() {
+					var index = $(this).index() + 1;
+					getList(index, size);
+				})
+				$('.next').click(function() {
+					var index = $(".page").filter('.change').index();
+					var max = $(".page:last").text();
+					if (index < max) {
+						index++;
+						getList(index + 1, size);
+						$('.pageMain').children().eq(0).appendTo('.pageMain');
+					}
+					
+				})
+				$('.prev').click(function() {
+					var index = $(".page").filter('.change').index();
+					if (index > 0) {
+						index--;
+						getList(index + 1, size);
+						$('.pageMain').children().last().prependTo('.pageMain');
+					}
+				})
+				$.getJSON('js/option.json', function(e) {
+					$.each(e.type, function(i, val) {
+						//								console.info('json对象返回',i);
+						$('#class>ul').append('<li><a  class="tab" index=' + i + '>' + val.name + '</a></li>')
+					})
+					$.each(e.style, function(i, val) {
+						$('#style>ul').append('<li><a class="tab"  index=' + i + ' >' + val.name + '</a></li>')
+					})
+					$.each(e.size, function(i, val) {
+						$('#size>ul').append('<li><a class="tab"  index=' + i + ' >' + val.name + '</a></li>')
+					})
+				})
+				$('#class').on('click', 'a', function() {
+					//								console.info($(this)[0]);
+					if ($(this).is('.tab')) {
+						console.info($(this).parent());
+						$(this).parent().parent().find('.tab').removeClass('class_change');
+						$(this).addClass('class_change');
+						var i = $(this).attr('index');
+						console.info(i);
+						classId = i;
+						getList(1, size)
+					}
+				})
+				$('#style').on('click', 'a', function() {
+					if ($(this).is('.tab')) {
+						console.info($(this).parent());
+						$(this).parent().parent().find('.tab').removeClass('class_change');
+						$(this).addClass('class_change');
+						var i = $(this).attr('index');
+						console.info(i);
+						styleId = i;
+						getList(1, size)
+					}
+				})
+				$('#size').on('click', 'a', function() {
+					if ($(this).is('.tab')) {
+						console.info($(this).parent());
+						$(this).parent().parent().find('.tab').removeClass('class_change');
+						$(this).addClass('class_change');
+						var i = $(this).attr('index');
+						console.info(i);
+						sizeId = i;
+						getList(1, size)
+					}
+				})
+				$('#clear').click(function(){
+					window.location='mallList.html';
+					
+				})
+			
+			
+				//获取页面传递过来的参数
+//				var search = window.location.search;
+//				if (search) { //如果有参数,进行分割字符串
+//					var param = window.location.search.split("?")[1];
+//					//classId=2&sizeId=undefined&styleId=undefined
+//					var arr = param.split('&');
+//					for (var i = 0; i < arr.length; i++) {
+//						//classId=2   || sizeId=undefined
+//						var str = arr[i].split('=');
+//						//将传递过来的数据保存到变量中
+//						if (str[0] == "classId" && str[1] != 'undefined') {
+//							classId = str[1];
+//						}
+//						if (str[0] == "sizeId" && str[1] != 'undefined') {
+//							sizeId = str[1];
+//						}
+//						if (str[0] == "styleId" && str[1] != 'undefined') {
+//							styleId = str[1];
+//						}
+//						if (str[0] == 'page') {
+//							page = str[1];
+//						}
+//					}
+//				}
+				
+				getList(1, size);
+				//刷新保存数据
+//				$('#class,#style,#size').on('click', 'a', function() {
+//					if ($(this).is('.tab')) {
+//						
+//						$(this).addClass('class_change').siblings().removeClass('class_change');
+//						var i = $(this).attr('index');
+//						if ($(this).parent().parent().parent().attr('id') == 'class') {
+//							console.info('进入')
+//							if (i == classId) {
+//								i = undefined;
+//							}
+//							window.location = url + "?classId=" + i + "&sizeId=" + sizeId + "&styleId=" + styleId + '&page=' + 1;
+//						} else if ($(this).parent().parent().parent().attr('id') == 'style') {
+//							if (i == styleId) {
+//								i = undefined;
+//							}
+//							window.location = url + "?classId=" + classId + "&sizeId=" + sizeId + "&styleId=" + i + '&page=' + 1;
+//						} else if ($(this).parent().parent().parent().attr('id') == 'size') {
+//							if (i == sizeId) {
+//								i = undefined;
+//							}
+//							window.location = url + "?classId=" + classId + "&sizeId=" + i + "&styleId=" + styleId + '&page=' + 1;
+//						}
+//					}
+//				})
+				$('.mall_list').on('click','.join_car',function(e) {
+					
+					var index = $(this).parent().parent().index()
+					var id = list[index].mall_id;
+					
+					var img = $(this).parent().siblings().find('img');
+					console.info(img);
+					var flyElm = img.clone().css('opacity', 0.75);
+					
+					$('body').append(flyElm);
+					flyElm.css({
+						'z-index': 91000000,
+						'display': 'block',
+						'position': 'absolute',
+						'top': img.offset().top +'px',
+						'left': img.offset().left +'px',
+						'width': img.width() +'px',
+						'height': img.height() +'px'
+					});
+					flyElm.animate({
+						top: $('#sidebar_shopCar').offset().top,
+						left: $('#sidebar_shopCar').offset().left,
+						width: 20,
+						height: 32
+					}, 'slow', function() {
+						flyElm.remove();
+					});
+					
+//					get先获取,然后拼接字符串，再次进行插入
+					var cookieId = getCookie('mallId')
+					cookieId += "," +id;
+					//set是重置 
+					setCookie('mallId',cookieId,1000*60*60*24);				
+//					摘取重要的信息保存到cookie当中 2
+						cookieIds =cookieIds.substring(1);
+						var idArr = cookieIds.split(',');
+		//				var num=[];
+						var newIdArr = [{Id:'',Mount:0}];
+						var x = 0;
+						for (var i = 0; i < idArr.length; i++) {
+							var id = idArr[i];
+							if (id != null && id.length == 0) {
+								continue;
+							}
+							var nubs = 0;
+							for(var j = 0; j<newIdArr.length; j++){
+					//			console.info(newIdArr[j].Id,id)
+								if(newIdArr[j].Id==id){
+									nubs++;
+									newIdArr[j].Mount++;
+								}
+							}
+							if(nubs==0){
+								newIdArr[x]={Id:'',Mount:1};
+								newIdArr[x].Id = id;
+								x++;
+								
+							}
+						}
+						console.info(newIdArr.length);
+						$('.sidebar').find('i').text(newIdArr.length++);
+					
+					
+					
+				});
+				
+				$('.mall_list').on('mouseenter','.every_mall',function(){
+					$(this).css({border:'1px solid #d22147'})
+					$(this).find('.collect').show();
+					$('.collect').hover(function(){
+						console.info('123');
+						$(this).css({background:'url(img/collect2.png) no-repeat'});
+					},function(){
+						$(this).css({background:'url(img/collect.png) no-repeat'});
+					})
+					
+				})
+				$('.mall_list').on('mouseleave','.every_mall',function(){
+					$(this).css({border:'1px solid #eaeaea'})
+					$(this).find('.collect').hide();
+				})
+				
+				
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="mallBg">
+			<div class="mall">
+				<p class="mall_title">
+					<a id="clear">全部结果：</a><span>></span><span class="menu">“衣服”</span> <i>商品共<b>1160</b>个</i>
+				</p>
+				<div class="mall_select">
+					<div id='class'>
+						<span>类型:</span>
+						<ul></ul>
+					</div>
+					<div id='style'>
+						<span>样式:</span>
+						<ul></ul>
+					</div>
+					<div id='size'>
+						<span>尺寸:</span>
+						<ul></ul>
+					</div>
+				</div>
+				<div class="mall_list">
+					<dl class="every_mall">
+						<dt><img src="img/blank.png" kl-src="" alt="" />
+							<span class="collect"></span>
+						</dt>
+						<dd>
+							<h3 class="price"><span>￥</span>708 <i><b>1000</b>件 </i></h3>
+							<h5 class="name"><a href="#">5 preview 女子蓝色字母七分袖T恤</a></h5>
+							<a class="join_car">加入购物车</a>
+						</dd>
+					</dl>
+				</div>
+				<div id="pagation">
+					<a class="prev">上一页</a>
+					<div class="pageMain">
+						
+					</div>
+					<a class="next">下一页</a>
+				</div>
+				<div class="like">
+								<h4>猜你喜欢<span>根据你的浏览记录推荐的商品</span></h4>
+								<div class="like_main">
+									<dl>
+										<dt><img src="img/index/like1.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|HiPP喜宝 有机益生菌奶粉 5段/2+1</h5>
+											<h6>今日特卖，限时购买省39元</h6>
+											<div class="price">
+												<b><span>￥</span>336</b>
+												<span>￥600</span>
+												<i>2414人已评价</i>
+											</div>
+										</dd>
+									</dl>
+									<dl>
+										<dt><img src="img/index/like2.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|HiPP喜宝 有机益生菌奶粉 3桶</h5>
+											<h6>立省39元</h6>
+											<div class="price">
+												<b><span>￥</span>339</b>
+												<span>￥536</span>
+												<i>2076人已评价</i>
+											</div>
+										</dd>
+									</dl>
+									<dl>
+										<dt><img src="img/index/like3.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|Aptamil 德国爱他美 婴儿奶粉 4段/1</h5>
+											<h6>今日特卖，限时购买省121元</h6>
+											<div class="price">
+												<b><span>￥</span>295</b>
+												<span>￥569</span>
+												<i>10419人已评价</i>
+											</div>
+										</dd>
+									</dl>
+									<dl style="border-right: none;">
+										<dt><img src="img/index/like4.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|HiPP喜宝 有机益生菌奶粉 3段/600</h5>
+											<h6>立省39元</h6>
+											<div class="price">
+												<b><span>￥</span>349</b>
+												<span>￥600</span>
+												<i>1246人已评价</i>
+											</div>
+										</dd>
+									</dl>
+
+								</div>
+							</div>
+				
+			</div>
+		</div>
+	</body>
+
+</html>

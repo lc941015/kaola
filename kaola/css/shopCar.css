@@ -1,0 +1,353 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	color: #333333;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	border: none;
+}
+
+li {
+	list-style: none;
+}
+
+.headBg {
+	background: #f2f2f2;
+	height: 32px;
+	line-height: 32px;
+}
+
+.head {
+	width: 1090px;
+	margin: 0 auto;
+	color: #666666;
+}
+
+.head a {
+	color: #666666;
+	text-decoration: none;
+	padding: 0 14px;
+	position: relative;
+	border-right: 1px solid #d3ccd3;
+}
+
+.head a:hover {
+	color: #e31436;
+}
+
+.head .noborder {
+	border: none;
+}
+
+.head li {
+	float: left;
+	list-style: none;
+	position: relative;
+}
+
+.head .headPhone {
+	background: url(../img/index/headPhone.png) left center no-repeat;
+}
+
+.head .headPhone a {
+	color: #e31436;
+}
+
+.head .head_left {
+	float: left;
+}
+
+.head .head_right {
+	float: right;
+}
+
+.head .change {
+	height: 34px;
+	line-height: 35px;
+	border-left: 1px solid #e8e8ea;
+	border-right: 1px solid #e8e8ea;
+	background: #FFFFFF;
+	display: block;
+	padding: 0 15px 0 14px;
+	margin-left: -2px;
+	margin-top: -2px;
+}
+.underShow{
+	display: none;
+}
+.head .underShow p a {
+	padding: 0;
+	border: none;
+}
+.head .person {
+	background: #FFFFFF;
+	position: absolute;
+	height: 189px;
+	width: 116px;
+	border: 1px solid #EAEAEA;
+	border-top: none;
+	z-index: 20;
+	left: -2px;
+}
+
+.head .person p {
+	margin: 0 auto;
+	width: 90px;
+	height: 28px;
+	line-height: 28px;
+	
+}
+
+.head .seaver {
+	background: #FFFFFF;
+	position: absolute;
+	height: 72px;
+	width: 98px;
+	border: 1px solid #EAEAEA;
+	border-top: none;
+	z-index: 20;
+	left: -2px;
+}
+.head .seaver p {
+	
+	margin-left: 14px;
+	height: 28px;
+	line-height: 28px;
+	
+}
+.head .seaver p a {
+	padding: 0;
+	border: none;
+}
+
+.head .more {
+	background: #FFFFFF;
+	position: absolute;
+	width: 88px;
+	height: 187px;
+	border: 1px solid #EAEAEA;
+	border-top: none;
+	z-index: 20;
+	left: -37px;
+}
+.head .more p {
+	
+	margin-left: 14px;
+	width: 64px;
+	height: 28px;
+	line-height: 28px;
+	border-bottom: 1px solid #EAEAEA;
+}
+.head .jiantou {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -2px;
+	width: 0;
+	height: 0;
+	border-color: #666 transparent transparent;
+	border-width: 4px 4px 0;
+	border-style: solid dashed dashed;
+}
+.title{
+	width: 1100px;
+	margin: 0 auto;
+	padding:24px 0 ;
+}
+.title .logo{
+	float: left;
+}
+.title .way{
+	float: right;
+	margin-top: -8px;
+}
+.shopCar{
+	width: 1090px;
+	margin: 0 auto;
+	clear: both;
+	margin-top: 50px;
+    min-height: 100px;
+}
+
+.shopCar_head  .col{
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 10px;
+	color: #999999;
+}
+.col1{
+	width: 114px;
+	position: relative;
+	
+}
+.shopCar_head .col1 input{
+	position: absolute;
+	top: 6px;
+
+}
+.col1 label{
+	padding-left: 18px;
+}
+.col2{
+	width: 396px;
+}
+.col3{
+	width: 132px;
+}
+.col4{
+	width: 154px;
+}
+.col5{
+	width: 100px;
+}
+.col6{
+	width: 74px;
+	text-align: center;
+}
+.dispatch{
+	clear: both;
+	height: 60px;
+	line-height: 60px;
+	padding-top: 10px;
+}
+.dispatch input{
+	margin-left: 10px;
+}
+.dispatch label{
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 20px;
+	color: #000;
+}
+.shopCar_main{
+	/*height: 120px;
+	line-height: 120px;
+	background: #fffbf0;*/
+	/*outline: 1px solid #EAEAEA;*/
+}
+.shopCar_main .every_shopCar{
+	height: 120px;
+	line-height: 120px;
+	background: #fffbf0;
+	outline: 1px solid #EAEAEA;
+}
+
+.shopCar_main .every_shopCar .col{
+	height: 120px;
+	line-height: 120px;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+}
+.shopCar_main .every_shopCar .col1{
+	width: 70px;
+	padding-left: 10px;
+}
+.shopCar_main .every_shopCar .col2{
+	width: 482px;
+}
+.shopCar_main .every_shopCar .col3{
+	width: 116px;
+}
+.shopCar_main .every_shopCar .col4{
+	width:208px
+}
+.shopCar_main .every_shopCar .col6{
+	width: 97px;
+    position: relative;
+    line-height: 150px;
+}
+
+.shopCar_main .every_shopCar .col6 img{
+	position: absolute;
+	top: 44px;
+    left: 42px;
+
+}
+.shopCar_mall dt{
+	float: left;
+	
+}
+.shopCar_mall dd{
+	float: left;
+	margin-left: 20px;
+	
+}
+.shopCar_mall dd a{
+	font-size: 14px;
+	font-weight: bold;
+	
+}
+.shopCar_mall dd a:hover{
+	text-decoration: underline;
+}
+.shopCar_mall dt img{
+	width: 80px;
+	height: 80px;
+	margin-top: 20px;
+}
+
+.number form{
+	float: left;
+	width:96px ;
+	height: 24px;
+	margin-top: 48px;
+}
+.number form span{
+	float: left;
+	width: 22px;
+	height: 22px;
+	line-height: 24px;
+	border: 1px solid #EAEAEA;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.number .num{
+	height: 22px;
+	width: 46px;
+	float: left;
+	text-align: center;
+	line-height: 24px;
+	border: 1px solid #EAEAEA;
+	outline:medium;
+}
+.number .nubChange{
+	background: #f3f3f3 !important ;
+	color: #CCCCCC !important;
+}
+
+.m-total{
+	position: fixed;_position:relative; bottom: 0;width: 1088px;min-width: 820px;
+	border:1px solid #eaeaea;z-index: 2000;
+}
+.m-total .tip{
+	padding: 0 20px;height: 40px;line-height: 40px;text-align: right;
+	border-bottom: 1px solid #eaeaea;color: #D12548;background-color: #fff;
+}
+.m-total .tip .warn{font-size: 18px;}
+.m-total .ttbar{
+	height: 40px;line-height: 40px;padding: 10px;position: relative;
+	background-color: #F8F8F8;
+}
+.m-total .lt{float: left;}
+.m-total .lt .opt{cursor: pointer;margin-left: 20px;}
+.m-total .rt{float: right;padding-right: 140px;line-height: 20px;text-align: right;}
+.m-total .rt .itm{margin-left: 20px;}
+.m-total .gobuy{position: absolute;right:-1px;top:-1px;bottom:0;width: 120px; line-height: 60px;text-align: center;
+ background-color:#D22147;color: #fff;font-size: 18px;cursor: pointer;}
+.m-total .gobuy:hover{background-color: rgb(245, 52, 94);text-decoration: none;}
+.m-total .gobuy.z-disable,.m-total a.z-disable,.m-total .gobuy.z-disable:hover,.m-total a.z-disable:hover{
+	background-color: #ccc;color: #fff;cursor: not-allowed;
+}
+.m-total .allmoney{color: #999;}
+.m-total .num{color: #D12147;font-weight: bold;font-size: 18px;}

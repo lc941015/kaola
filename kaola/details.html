@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" type="text/css" href="css/details.css"/>
+	<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.get('head.html', function(e) {
+					$('body').prepend(e);
+					window.onscroll=undefined;
+						$('.nav li').hover(function(){
+							$(this).find('.twoNav').hide();
+						},function(){
+							$(this).find('.twoNav').hide();
+						})
+				});
+			$.get('bottom.html', function(e) {
+						$('body').append(e);
+						
+			});
+			
+			
+			$('#shade').hover(function(){
+				$('#move').show();
+				$('#bigShow2').show();
+			},function(){
+				$('#move').hide();
+				$('#bigShow2').hide();
+				
+			})
+			
+			$('#shade').mousemove(function(e){
+				$boxL=$('#shade').offset().left;
+				$boxT=$('#shade').offset().top;
+				$x=e.pageX;
+				$y=e.pageY;
+				$moveX=$('#move').width()/2;
+				$moveY=$('#move').height()/2;
+				
+				$moveLeft=$x-$boxL-$moveX;
+				$moveTop=$y-$boxT-$moveY;
+				
+				
+				if($moveLeft<0){
+					$moveLeft=0;
+				}else if($moveLeft>($("#shade").width() - $moveX * 2)){
+					$moveLeft=$("#shade").width() - ($moveX * 2);
+				}
+				if($moveTop<0){
+					$moveTop=0;
+				}else if($moveTop>($("#shade").height() - $moveY * 2)){
+					$moveTop=$("#shade").height() - ($moveY * 2);
+				}
+				$('#move').css({left:$moveLeft,top:$moveTop})
+				$('#bigShow2 img').css({left:-$moveLeft*2,top:-$moveTop*2})
+			})
+			$('#littleShow img').hover(function(){
+				var index=$(this).parent().index();
+				$(this).css({outline:'2px solid #d22147'})
+				$('#bigShow img').attr('src','img/details/show'+(index+1)+'.jpg')
+				$('#bigShow2 img').attr('src','img/details/show'+(index+1)+'.jpg')
+				
+				console.info(index);
+				
+				
+			},function(){
+				$(this).css({outline:'none'})
+			})
+			
+			
+			
+			
+			for(var i=0;i<4;i++){
+				$('#pagation li').eq(i).show();
+			}
+			
+			if($('#pagation li:first').is(':visible')){
+				
+					$('#prev').css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea',cursor:'no-drop'})
+			}else{
+				$('#prev').css({color:'#333' ,
+	border: '1px solid #eaeaea',cursor:'pointer'})
+				$('#prev').hover(function(){
+				$(this).css({color:'#D22147' ,
+	border: '1px solid #D22147'})
+			},function(){
+				$(this).css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea'})
+			})
+			}
+			
+			if($('#pagation li:last').is(':visible')){
+					$('#next').css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea',cursor:'no-drop'})
+			}else{
+				$('#next').css({color:'#333' ,
+	border: '1px solid #eaeaea',cursor:'pointer'})
+				$('#next').hover(function(){
+				$(this).css({color:'#D22147' ,
+	border: '1px solid #D22147'})
+			},function(){
+				$(this).css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea'})
+			})
+				
+			}
+			var index=0
+			$('#next').click(function(){
+				if($('#pagation li:last').is(':visible')){
+					$('#next').css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea',cursor:'no-drop'})
+					return;
+			}else{
+				$('#next').css({color:'#333' ,
+	border: '1px solid #eaeaea',cursor:'pointer'})
+				$('#next').hover(function(){
+				$(this).css({color:'#D22147' ,
+	border: '1px solid #D22147'})
+			},function(){
+				$(this).css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea'})
+			})
+				}
+				$('#pagation li').eq(index).hide();
+				index++;
+				$('#pagation li').eq(index+3).show();
+			})
+
+			
+			$('#prev').click(function(){
+				if($('#pagation li:first').is(':visible')){
+				
+					$('#prev').css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea',cursor:'no-drop'})
+					return;
+			}else{
+				$('#prev').css({color:'#333' ,
+	border: '1px solid #eaeaea',cursor:'pointer'})
+				$('#prev').hover(function(){
+				$(this).css({color:'#D22147' ,
+	border: '1px solid #D22147'})
+			},function(){
+				$(this).css({color:'#eaeaea' ,
+	border: '1px solid #eaeaea'})
+			})
+			}
+				index--;
+				$('#pagation li').eq(index).show();
+				$('#pagation li').eq(index+4).hide();
+			})
+			
+			//详情收起放下
+			var i=0;
+			$('.abstruct dl').eq(5).nextAll().not(':last').hide();
+			$('#more').click(function(){
+				if(i==0){
+					$('.abstruct dl').eq(5).nextAll().not(':last').show();
+					i=1;
+					return false;
+				}else{
+					$('.abstruct dl').eq(5).nextAll().not(':last').hide();
+					i=0;
+					return false;
+				}
+			})
+			
+			//checkbox
+			var a=1;
+			$('#auto').click(function(){
+				$('#auto:hidden')
+				if(a){
+					$('#auto img').show();
+					a=0;
+				}else {
+					$('#auto img').hide();
+					a=1;
+				}
+			})
+			
+			
+			$('.evaluate_title input').click(function(){
+				$('.evaluate_title li').css({color:'#333333',fontWeight:'normal'});
+				$('.evaluate_title li span').css({color:'#333333',fontWeight:'normal'});
+				if($(this).is(':checked')){
+					$(this).parent().css({color:'#d31b44',fontWeight:'bold'});
+					$(this).next().css({color:'#d31b44',fontWeight:'bold'});
+				}
+			})
+			
+			$('#mall').click(function(){
+				$('#evaluate').removeClass('selected');
+				$('#mall').addClass('selected');
+				$('.details .main').show();
+			})
+			$('#evaluate').click(function(){
+				$('#mall').removeClass('selected');
+				$('#evaluate').addClass('selected');
+				$('.details .main').hide();
+			})
+			
+			//数量的增加
+			$('#add').click(function(){
+				var value=$('#num').val()
+				value++;
+				$('#num').val(value);
+				$('#sub').removeClass('nubChange');
+			})
+			$('#sub').click(function(){
+				var value=$('#num').val()
+				if(value>1){
+					value--;
+					$('#num').val(value);
+				}else if(value==1){
+					$('#sub').addClass('nubChange');
+				}
+				
+			})
+		})
+		
+		
+		
+	</script>
+	</head>
+	<body>
+		<h4 class="mall_title"><a href="index.html">网易考拉海购</a><span>></span>Augelute 夏款宝宝动物造型三角背心哈衣</h4>
+		<div class="particulars">
+			<div class="show">
+				<div id="bigShow">
+					<!--<img src="img/xq/bigShow4.jpg"/>
+					<img src="img/xq/bigShow3.jpg"/>
+					<img src="img/xq/bigShow2.jpg"/>
+					<img src="img/xq/bigShow1.jpg"/>-->
+					<img src="img/details/show1.jpg"/>
+					<span id="move">
+					
+					</span>
+					
+					<span id="shade">
+					
+					</span>
+					
+				</div>
+				<div id="bigShow2">
+					<img src="img/details/show1.jpg"/>
+				</div>
+				
+				<div id="littleShow">
+					<span id="prev"><</span>
+					<ul id="pagation">
+						<li><img src="img/details/showDown1.jpg"/></li>
+						<li><img src="img/details/showDown2.jpg"/></li>
+						<li><img src="img/details/showDown3.jpg"/></li>
+						<li><img src="img/details/showDown4.jpg"/></li>
+						<li><img src="img/details/showDown5.jpg"/></li>
+						<li><img src="img/details/showDown6.jpg"/></li>
+						<li><img src="img/details/showDown7.jpg"/></li>
+					</ul>
+					<span id="next">></span>
+				</div>
+			</div>
+			<div class="main">
+				<div class="country"><span><img src="img/activity/china.png"/></span>中国台湾<i>|</i>Augelute</div>
+				<h3>Augelute 夏款宝宝动物造型三角背心哈衣</h3>
+				<p>经典的圆领，简单大方，美观耐磨，可爱的动物印花，形象立体逼真，侧边小动物的耳朵，充满立体感。这款YY面料非常柔软，手感也很舒适，开档的设计，让日常脱换尿片，变得非常简单(该商品由网易秀品商城提供)</p>
+				<div class="price">
+					<label >售价:</label> <b>￥38.00</b> <span>2.3折</span><span>包税</span><span>包邮</span><i>参考价 ￥169.00</i>
+				</div>
+				<div class="freight">
+					<label >运费:</label>  <span class="start">宁波包税1号仓</span>至<span id="arrive">上海宝山区<i class="jiantou"></i></span> <span id='free'>订单实付满88元免运费<i class="jiantou"></i></span>
+				</div>
+				<div class="tallage">
+					<label >税费:</label>  <b>【本商品包税】</b><span>国内行货，无需额外交税</span>
+				</div>
+				<div class="number">
+					<label >数量:</label>  <form ><span id="sub" class="nubChange">-</span><input id="num" type="text" value="1" /><span id="add">+</span></form><i>库存充足</i>
+				</div>
+				<div class="buy">
+					<a id="buy">立即购买</a>
+					<a id="shopCar"><i></i>加入购物车</a>
+					<a id="collect">收藏</a>
+				</div>
+			</div>
+			
+		</div>
+		<div class="content">
+			<div class="left">
+				<div class="left_show">
+					<h4>看了又看</h4>
+					<dl>
+						<dt></dt>
+						<dd></dd>
+					</dl>
+				</div>
+				<div class="lastBuy">
+					<h4>看了最终买</h4>
+					<dl>
+						<dt></dt>
+						<dd></dd>
+					</dl>
+				</div>
+				<div class="hotSell">
+					<h4>热销排行榜</h4>
+					<dl>
+						<dt><span>
+							1
+						</span><img src="img/details/hotSell1.jpg"/></dt>
+						<dd>
+							<h5><a href="#">Augelute 夏款宝宝动物造型短袖连体哈衣帽子三件套</a></h5>
+							<div class="price"><b>￥55</b><span>￥115</span></div>
+							<p>156人已评价</p>
+						</dd>
+					</dl>
+					<dl>
+						<dt><span>
+							2
+						</span><img src="img/details/hotSell2.jpg"/></dt>
+						<dd>
+							<h5>Augelute 夏款宝宝动物造型短袖连体哈衣帽子三件套</h5>
+							<div class="price"><b>￥55</b><span>￥115</span></div>
+							<p>156人已评价</p>
+						</dd>
+					</dl>
+					<dl>
+						<dt><span>
+							3
+						</span><img src="img/details/hotSell3.jpg"/></dt>
+						<dd>
+							<h5>Augelute 夏款宝宝动物造型短袖连体哈衣帽子三件套</h5>
+							<div class="price"><b>￥55</b><span>￥115</span></div>
+							<p>156人已评价</p>
+						</dd>
+					</dl>
+					<dl>
+						<dt><span>
+							4
+						</span><img src="img/details/hotSell4.jpg"/></dt>
+						<dd>
+							<h5>Augelute 夏款宝宝动物造型短袖连体哈衣帽子三件套</h5>
+							<div class="price"><b>￥55</b><span>￥115</span></div>
+							<p>156人已评价</p>
+						</dd>
+					</dl>
+					<dl>
+						<dt><span>
+							5
+						</span><img src="img/details/hotSell5.jpg"/></dt>
+						<dd>
+							<h5>Augelute 夏款宝宝动物造型短袖连体哈衣帽子三件套</h5>
+							<div class="price"><b>￥55</b><span>￥115</span></div>
+							<p>156人已评价</p>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="right">
+				<div class="details">
+					<h3 id="#detailstop"><a id="mall" class="selected" href="#detailstop">商品详情</a><a id="evaluate" href="#detailstop">用户评价<span>381</span></a> <a id="phone">手机购买<img src="img/details/ewm.png" alt="" /><i class="jiantou"></i></a></h3>
+					<div class="abstruct">
+						<dl>
+							<dt>商品品牌:</dt>
+							<dd>Augelute</dd>
+						</dl>
+						<dl>
+							<dt>品牌国:</dt>
+							<dd>中国台湾</dd>
+						</dl>
+						<dl>
+							<dt>颜色:</dt>
+							<dd>粉色</dd>
+							<dd>黄色</dd>
+							<dd>白色</dd>
+							<dd>蓝色</dd>
+						</dl>
+						<dl>
+							<dt>面料:</dt>
+							<dd>棉</dd>
+						</dl>
+						<dl>
+							<dt>适用年龄:</dt>
+							<dd>3-6个月</dd>
+							<dd>6个月-1岁</dd>
+						</dl>
+						<dl>
+							<dt>尺码:</dt>
+							<dd>70厘米</dd>
+							<dd>80厘米</dd>
+							<dd>90厘米</dd>
+						</dl>
+						<dl>
+							<dt>适用性别:</dt>
+							<dd>中性</dd>
+						</dl>
+						<dl>
+							<dt>适用季节:</dt>
+							<dd>夏季</dd>
+							<dd>春秋季</dd>
+						</dl>
+						<dl>
+							<dt>风格:</dt>
+							<dd>简约</dd>
+							<dd>韩版</dd>
+						</dl>
+						<dl>
+							<dt>厚度指数:</dt>
+							<dd>常规</dd>
+						</dl>
+						<dl>
+							<dt>是否商场同款:</dt>
+							<dd>是</dd>
+						</dl>
+						<dl>
+							<dt>重量:</dt>
+							<dd>0.3</dd>
+						</dl>
+						<dl>
+							<dt>是否带帽:</dt>
+							<dd>无帽</dd>
+						</dl>
+						<dl>
+							<dt>衣门襟:</dt>
+							<dd>无扣</dd>
+						</dl>
+						<dl>
+							<dt>领型:</dt>
+							<dd>圆领</dd>
+						</dl>
+						<dl>
+							<dt>款式:</dt>
+							<dd>三角爬</dd>
+						</dl>
+						<a href="#" id="more">展开<img src="../kaola/img/details/jiantou2.png" alt="" /></a>
+					</div>
+					<div class="main">
+						<img src="img/details/abstract.png" alt="" />
+					</div>
+					
+					
+					
+				</div>
+				<div class="evaluate">
+					<div class="evaluate_show">
+						<span><b>96.9</b>%好评</span>
+						<img src="img/details/star.png"/>
+					</div>
+					<div class="evaluate_title">
+						<ul>
+							<li><input name="evaluate" type="radio"  checked />全部评价<span>（381）</span></li>
+							<li><input name="evaluate" type="radio"/>好评<span>（369）</span></li>
+							<li><input name="evaluate" type="radio"/>中评<span>（8）</span></li>
+							<li><input name="evaluate" type="radio"/>差评<span>（4）</span></li>
+							<li><input name="evaluate" type="radio"/>晒单<span>（31）</span></li>
+						</ul>
+						<ol>
+							<li><i class="checkBox" id="auto"><img style="display: none;position: absolute;" src="img/login/duigou.png"/></i>有内容的评价</li>
+							<li><a href="javascript:;;">查看所有评价</a></li>	
+						</ol>
+					</div>
+					<div class="evaluate_main">
+						没有找到符合条件的评价
+					</div>
+					<div class="evaluate_tip">
+						<h5>购买须知</h5>
+						<ol>
+							<li>您在本（公司）网站上购买的境外商品，仅限个人自用不得进行再销售。商品本身可能无中文标签，您可以查看网站的翻译或者在线联系我们的客服。</li>
+							<li>您购买的境外商品适用的品质、健康、标识等项目使用标准均按照原产国使用标准（比如本站所销售的欧洲奶粉为欧洲标准，所售美国奶粉为美国标准，所售澳洲奶粉则为澳洲标准），可能与我国标准有所不同，所以在使用过程中产生的危害或损失以及其他风险，将由您个人承担。</li>
+							<li>您在本（公司）网站上购买保税仓发货的境外商品时，自动视为考拉海购代您向海关进行申报和代缴税款。</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</body>
+</html>

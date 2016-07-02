@@ -1,0 +1,426 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: #333333;
+	font-size: 12px;
+}
+
+body {
+	background: #f6f6f6;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+img{
+	border: none;
+	
+}
+body{
+	background: #ca1d48;
+}
+
+.banner img{
+
+}
+.banner_top{
+	height: 214px;
+	background: url(../img/activity/bannerTop.jpg) transparent no-repeat scroll center top;
+}
+.banner_middle{
+	height: 210px;
+	background: url(../img/activity/bannerMiddle.jpg) transparent no-repeat scroll center top;
+}
+.banner_down{
+	height: 232px;
+	background: url(../img/activity/bannerDown.jpg) transparent no-repeat scroll center top;
+}
+
+.activity_top{
+	height: 196px;
+	background: url(../img/activity/activity1.jpg) transparent no-repeat scroll center top;
+}
+.activity_top a{
+	display: block;
+	height: 196px;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.activity_middle{
+	height: 506px;
+	background: url(../img/activity/activity2.jpg) transparent no-repeat scroll center top;
+}
+.activity_middle .middle1{
+	margin-left: 176px;
+	width: 420px;
+	height: 310px;
+	float: left;
+}
+.activity_middle .middle2{
+	width: 580px;
+	height: 244px;
+	float: left;
+}
+.activity_middle .middle3{
+	width: 419px;
+    height: 196px;
+    float: left;
+    margin-left: 175px;
+    margin-top: -193px;
+}
+.activity_middle .middle4{
+	width: 250px;
+	height: 260px;
+	float: left;
+}
+.activity_middle .middle5{
+	width: 330px;
+	height: 260px;
+	float: left;
+}
+.activity_down{
+	height: 264px;
+	background: url(../img/activity/activity3.jpg) transparent no-repeat scroll center top;
+}
+.activity_down .down1{
+	margin-left: -419px;
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+.activity_down .down2{
+	margin-left: -168px;
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+.activity_down .down3{
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+.activity_down .down4{
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+
+.list_title{
+	height: 99px;
+	background: url(../img/activity/title.jpg) transparent no-repeat scroll center top;
+}
+.list1{
+	height: 218px;
+	background: url(../img/activity/list1.jpg) transparent no-repeat scroll center top;
+}
+.list2{
+	height: 223px;
+	background: url(../img/activity/list2.jpg) transparent no-repeat scroll center top;
+}
+.center{
+	width: 1000px;
+	margin: 0 auto;
+}
+.list1 a{
+	margin-top: 9px;
+}
+.center a{
+	float: left;
+	width: 200px;
+	height: 206px;
+}
+
+.content{
+	width: 1020px;
+	margin: 0 auto;
+	clear: both;
+}
+.diaper_title{
+	height: 110px;
+	background:url(../img/activity/diaper1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.diaper_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 536px;
+    top: 75px;
+}
+.milkPowder_title{
+	height: 110px;
+	background:url(../img/activity/milkPowder1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.milkPowder_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 547px;
+    top: 65px;
+}
+
+.mother_title{
+	height: 110px;
+	background:url(../img/activity/mother1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.mother_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 577px;
+    top: 69px;
+}
+
+.beauty_title{
+	height: 110px;
+	background:url(../img/activity/beauty1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.beauty_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 590px;
+    top: 67px;
+}
+
+.clothes_title{
+	height: 110px;
+	background:url(../img/activity/clother1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.clothes_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 545px;
+    top: 74px;
+}
+
+
+.cate_title{
+	height: 110px;
+	background:url(../img/activity/cate1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.cate_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 577px;
+    top: 65px;
+}
+
+.nutrition_title{
+	height: 110px;
+	background:url(../img/activity/nutrition1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.nutrition_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 525px;
+    top: 73px;
+}
+
+.home_title{
+	height: 110px;
+	background:url(../img/activity/home1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.home_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 566px;
+    top: 73px;
+}
+
+.digital_title{
+	height: 110px;
+	background:url(../img/activity/digital1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.digital_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 587px;
+    top: 67px;
+}
+
+.overseas_title{
+	height: 110px;
+	background:url(../img/activity/overseas1.jpg) transparent no-repeat scroll center top; ;
+	position: relative;
+}
+.overseas_title a{
+	position: absolute;
+    display: block;
+    width: 86px;
+    height: 22px;
+    left: 548px;
+    top: 70px;
+}
+
+
+
+.content_main dl{
+	width: 246px;
+	height: 366px;
+	background: #FFFFFF;
+	float: left;
+	margin: 0 8px 8px 0;;
+}
+.content_main dl dt{
+	text-align: center;
+	position: relative;
+}
+.content_main dl dt a:hover img{
+	opacity: 0.6;
+	filter: alpha(opacity=60)
+}
+
+.content_main dl dt  img{
+	width: 244px;
+	height: 244px;
+	display: block;
+}
+.content_main dl dt .country{
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top:6px;
+	left: 6px;
+
+}
+.content_main dl dd{
+	width: 220px;
+	margin: 0 auto;
+	height: 100px;
+	margin-top: 10px;
+}
+.content_main dl dd a:hover{
+	text-decoration: underline;
+	
+}
+
+.content_main dl dd h4{
+	width: 210px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.content_main dl dd h4 a{
+	color: #333;
+	font-size: 13px;
+}
+.content_main dl dd h4 b{
+	color: #D22147;
+	
+}
+.content_main dl dd h4 span{
+	padding: 0 2px;
+	
+}
+.content_main dl dd h6{
+	height: 30px;
+	line-height: 30px;
+}
+.content_main dl dd h6 a{
+	color: #999;
+	font-size: 10px;
+}
+.tip span{
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	color:#D22147 ;
+	font-size: 10px;
+	padding:0 2px;
+	border: 1px dotted #D22147;
+	margin-right: 4px;
+}
+.price{
+	height: 28px;
+	line-height: 28px;
+}
+
+
+.price span{
+	color: #D22147;
+	font-size: 10px;
+}
+.price span b{
+	color: #D22147;
+	font-size: 20px;
+}
+.price i{
+	margin-left:8px ;
+	color: #999999;
+	font-size: 10px;
+	font-style: normal;
+	text-decoration: line-through;
+}
+.price a{
+	float: right;
+	height: 28px;
+	width: 60px;
+	line-height: 28px;
+	text-align: center;
+	color: #FFFFFF;
+	background: #D22147;
+}
+.price a:hover {
+	color: #fff;
+    opacity: 0.85;
+    filter: alpha(opacity=85)
+    text-decoration: none;
+}
+
+.broadside{
+	position: fixed;
+	top: 6%;
+	right: 1%;
+	width: 150px;
+	height: 630px;
+	background: url(../img/activity/broadside.png);
+}
+.broadside ul{
+	height: 450px;
+	width: 120px;
+	margin: 0 auto;
+	margin-top: 124px;
+}
+.broadside ul li a{
+	display: block;
+	width: 120px;
+	height: 38px;
+}
+.broadside .top{
+	width: 120px;
+	height: 38px;
+	position: absolute;
+	left: 16px;
+}
+.sidebar{
+	display: none;
+}

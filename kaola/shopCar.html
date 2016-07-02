@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/shopCar.css" />
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var priceAll=0;
+			$(function() {
+				$.get('bottom.html', function(e) {
+					$('body').append(e);
+				});
+				
+				var cookieIds =  getCookie('mallId')
+				cookieIds =cookieIds.substring(1);
+				var idArr = cookieIds.split(',');
+//				var num=[];
+				var newIdArr = [{Id:'',Mount:0}];
+				var x = 0;
+				for (var i = 0; i < idArr.length; i++) {
+					var id = idArr[i];
+					if (id != null && id.length == 0) {
+						continue;
+					}
+					var nubs = 0;
+					for(var j = 0; j<newIdArr.length; j++){
+			//			console.info(newIdArr[j].Id,id)
+						if(newIdArr[j].Id==id){
+							nubs++;
+							newIdArr[j].Mount++;
+						}
+					}
+					if(nubs==0){
+						newIdArr[x]={Id:'',Mount:1};
+						newIdArr[x].Id = id;
+						x++;
+						
+					}
+					console.info(newIdArr);
+				}
+
+
+				for(var i=0;i<newIdArr.length;i++) {
+					var id = newIdArr[i].Id;
+//					console.info(id);
+//					num[i]=1;
+//					var k=0
+//					for(var j=1;j<idArr.length;j++ ){
+//						if(idArr[j]==idArr[i]){
+//							num[i]++;
+//							k=1;
+//						}else if(k==0){
+//							idArr2.push(idArr[i]);
+//						}
+//					}
+//					console.info(idArr2,num);
+					
+					var baseUrl="http://10.11.55.139:3003";
+					
+					var priceAll=0;
+					$.get(baseUrl+'/mall/get', {
+			        	mall_id:id
+			        }).success(function(e) {
+						var data=e.data
+						var i=0;
+						$.each(data, function(j, val) {
+							var mount =newIdArr[i].Mount;
+							i++;
+							console.info(mount);
+						var div='<div class="every_shopCar">'
+					+'<div class="col col1">'
+					+	'<input checked="checked" id="selectAll" name="selectAll" type="checkbox">'
+					+'</div>'
+					+'<div class="col col2">'
+					+	'<dl class="shopCar_mall">'
+					+		'<dt><img src="'+baseUrl+val.mall_imgUrl+'"/></dt>'
+					+		'<dd><a href="#">'+val.mall_name+'</a>'
+					+		'</dd>'
+					+	'</dl>'
+					+'</div>'
+					+'<div class="col col3 price" >'+val.mall_price+'.00'+'</div>'
+					+'<div class="col col4 number">'
+					+	'<form><span class="sub" class="nubChange">-</span>'
+					+		'<input class="num" type="text" value="'+mount+'" /><span class="add">+</span></form>'
+					+'</div>'
+					+'<div class="col col5 allPrice">'+(val.mall_price)*mount+'.00'+'</div>'
+					+'<div class="col col6"><img id="'+val.mall_id+'" class="del" src="img/shopCar/xx.png" />移出我的收藏</div>'
+					+'</div>'
+						priceAll+=(val.mall_price)*mount;
+						$('.shopCar_main').append(div);
+						});
+						$('#mallCount').text(newIdArr.length);
+						
+						$('#allPrice').text(priceAll);
+			        })
+			        
+				}	
+				$('.shopCar_main').on('click','.add',function() {
+					
+					var price=parseFloat($(this).parent().parent().siblings().eq(2).text());
+					
+					var value = $(this).siblings().eq(1).val()
+					value++;
+					price*=value;
+					 $(this).siblings().eq(1).val(value);
+					 $(this).siblings().eq(0).removeClass('nubChange');
+					 $(this).parent().parent().siblings().eq(3).text(price+'.00')
+					 priceAll+=price;
+					 $('#allPrice').text(priceAll);
+				})
+				$('.shopCar_main').on('click','.sub',function() {
+					var value =$(this).siblings().eq(0).val()
+					var price=parseFloat($(this).parent().parent().siblings().eq(2).text());
+					if (value > 1) {
+						value--;
+						price*=value;
+						$(this).siblings().eq(1).val(price);
+						$(this).siblings().eq(0).removeClass('nubChange');
+				 		$(this).parent().parent().siblings().eq(3).text(price+'.00');
+				 		 priceAll-=price;
+					 	$('#allPrice').text(priceAll);
+					} else if (value == 1) {
+						$(this).siblings().find('.sub').addClass('nubChange');
+					}
+				})
+				$('.shopCar_main').on('click','.del',function() {
+					$(this).parent().parent().remove();	
+					var price=$(this).parent().siblings().eq(4).text();
+					console.info(price);
+					priceAll-=price;
+					$('#allPrice').text(priceAll);
+					
+				})
+				//获取件数
+				var cookieIds =  getCookie('mallId');
+				cookieIds =cookieIds.substring(1);
+				var idArr = cookieIds.split(',');
+				
+				//获取总价
+//				var priceArr=$('.allPrice');
+//				console.info(priceArr);
+				
+			})	
+				
+		</script>
+	</head>
+
+	<body>
+		<div class="headBg">
+			<div class="head">
+				<ul class="head_left">
+					<li>考拉欢迎你！</li>
+					<li><a href="#">登陆</a></li>
+					<li><a href="#" class="noborder">免费注册</a></li>
+					<li class="headPhone "><a href="#" class="noborder">手机考拉海淘</a></li>
+				</ul>
+				<ul class="head_right">
+					<li><a href="#" style="color:#e31436;">每日签到</a></li>
+					<li><a href="#">我的订单</a></li>
+					<li><a href="#">个人中心<i class="jiantou"></i></a>
+						<div class="underShow person">
+							<p style="margin-top: 4px;"><a href="#">我的优惠券</a></p>
+							<p style="border-bottom: 1px solid #EAEAEA;"><a href="#">我的考拉豆</a></p>
+							<p style="border-bottom: 1px solid #EAEAEA;"><a href="#">账户安全</a></p>
+							<p><a href="#">我收藏的商品</a></p>
+							<p style="border-bottom: 1px solid #EAEAEA;"><a href="#">我关注的品牌</a></p>
+							<p><a href="#">售后管理</a></p>
+						</div>
+					</li>
+					<li><a href="#">客户服务<i class="jiantou"></i></a>
+						<div class="underShow seaver">
+							<p style="margin-top:4px;padding-left:20px  ;background: url(img/index/kfBg.png) left center no-repeat;"><a href="#">联系客服</a></p>
+							<p style="padding-left:20px  ;background: url(img/index/bzBg.png) left center no-repeat;"><a href="#">帮助中心</a></p>
+
+						</div>
+					</li>
+					<li><a href="#">游戏充值</a></li>
+					<li><a href="#">消费者告书</a></li>
+					<li><a href="#" class="noborder">更多<i class="jiantou"></i></a>
+						<div class="underShow more">
+							<p style="margin-top: 4px;"><a href="#">收藏本站</a></p>
+							<p><a href="#">新浪微博</a></p>
+							<p><a href="#">微信公众号</a></p>
+							<p><a href="#">易信公众号</a></p>
+							<p><a href="#">招商合作</a></p>
+							<p><a href="#">考拉招聘</a></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="title">
+			<a href="index.html"><img src="img/index/logo1.png" alt="logo" class="logo" /></a>
+			<img src="img/shopCar/way.png" class="way" />
+		</div>
+
+		<div class="shopCar">
+			<div class="shopCar_head">
+				<div class="col col1">
+					<input checked="checked" id="selectAll" name="selectAll" type="checkbox">
+					<label class="lab" for="selectAll">全选</label>
+				</div>
+				<div class="col col2">商品信息</div>
+				<div class="col col3">单价（元）</div>
+				<div class="col col4">数量</div>
+				<div class="col col5">金额（元）</div>
+				<div class="col col6">操作</div>
+			</div>
+			<div class="dispatch">
+				<input checked="checked" id="selectAll" name="selectAll" type="checkbox">
+				<label class="lab" for="selectAll">宁波保税1号仓发货</label>
+			</div>
+			<div class="shopCar_main">
+				<!--<div class="every_shopCar">
+					<div class="col col1">
+						<input checked="checked" id="selectAll" name="selectAll" type="checkbox">
+					</div>
+					<div class="col col2">
+						<dl class="shopCar_mall">
+							<dt><img src="img/details/hotSell1.jpg"/></dt>
+							<dd><a href="#">花王纸尿片</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="col col3 price" >306.00</div>
+					<div class="col col4 number">
+						<form><span class="sub" class="nubChange">-</span>
+							<input class="num" type="text" value="1" /><span class="add">+</span></form>
+					</div>
+					<div class="col col5 allPrice">306.00</div>
+					<div class="col col6"><img class="del" src="img/shopCar/xx.png" />移出我的收藏</div>
+				</div>-->
+			</div>
+			<div style="position: relative; width: 1088px;" id="totalbar" class="m-total f-cb">
+	        <!--Regular if41--><!--Regular if42-->
+	        <div class="ttbar">
+	          <div class="lt">
+	            <input checked="checked" class="u-chk" id="selectAll" name="selectAll" type="checkbox"><label class="lab" for="selectAll">全选</label><b class="opt">删除选中商品</b><!--Regular if43-->
+	          </div>
+	          <div class="rt">
+	            <p class="allgoods">已选商品 <em class="num" id="mallCount">0</em> 件 <span class="itm">总价(不含运费)：<em class="num" id='allPrice'>0.00</em></span></p>
+	            <p class="allmoney">活动优惠：-￥20.00<span class="itm">商品应付总计：￥773.00</span><span class="itm">订单税费：￥36.89</span></p>
+	            <a class="gobuy ">去结算</a>
+	          </div>
+	        </div>
+	      </div>
+			
+		</div>
+
+		<script src="js/move.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('.underShow').parent().hover(function() {
+				var $a = $(this).find('.jiantou');
+				var b = $a[0];
+				$(this).find('a').addClass('change');
+				move(b)
+					.rotate(180).duration('0.2s')
+					.end();
+				$(this).find('.underShow').show();
+			}, function() {
+				var $a = $(this).find('.jiantou')
+				var b = $a[0];
+				$(this).find('a').removeClass('change');
+				move(b)
+					.rotate(360)
+					.duration('0.2s')
+					.end();
+				$(this).find('.underShow').hide();
+			})
+		</script>
+
+	</body>
+
+</html>

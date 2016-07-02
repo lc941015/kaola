@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>网易考拉海购</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<!--<script data-main="scripts/main.js" src="scripts/require.js"></script>-->
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				//导入ajax head 插入到页面中
+				$.get('head.html', function(e) {
+					$('body').prepend(e);
+					$(window).scroll(function(){
+						
+					});
+				});
+				$.get('bottom.html', function(e) {
+					$('body').append(e);
+				});
+				
+				$(window).scroll(function(){
+					console.info($(this).scrollTop());
+					  if($(this).scrollTop()>256){
+				       $(".broadside").show();
+				      }else{
+				      	 $(".broadside").hide();
+				      }
+				})
+				
+				$('.broadside li').click(function(){
+					var index=$(this).index();
+					var divTop=$('#content>div').eq(index).offset().top-34;
+					$('body').animate({ 
+					   scrollTop:divTop,
+					  }, 1000 );
+//					$(window).scrollTop(divTop);		
+					
+				})
+				
+				$('#content img').hover(function(){
+					$(this).css({opacity:'0.7'});
+				},function(){
+					$(this).css({opacity:'1'});
+				})
+				$('.content_hot li').hover(function(){
+					$(this).find('.xin').show();
+				},function(){
+					$(this).find('.xin').hide();
+				})
+				
+				var mySwiper = new Swiper('.swiper-container', {
+					loop: true,
+					// 如果需要分页器
+					pagination: '.swiper-pagination',
+					autoplay: 3000,
+					speed: 300,
+					paginationClickable: true,
+					autoplayDisableOnInteraction:false,
+				})
+				//倒计时
+				console.info(time);
+				var oneMinute=setInterval(
+					function(){
+						//获取现在时间的毫秒数
+						var nowTime=new Date().getTime();
+						var endTime=new Date("2016/5/24 00:00:00").getTime(); //设定目标时间
+						var time=endTime-nowTime;
+						
+						
+						var hour=Math.floor(time/(1000*60*60))
+						time-=hour*(1000*60*60);
+						var min=Math.floor(time/(1000*60))
+						time-=min*(1000*60);
+						var ss=Math.floor(time/1000)
+						
+//						console.info(hour,min,ss);
+						
+						if(ss==0&&min==0&&hour==0){
+							clearInterval(oneMinute);
+						}
+						
+						if(hour < 10){ 
+							$('#hour1').text('0')  ;
+							$('#hour2').text(hour) ;
+						}else{
+							$('#hour1').text(parseInt(hour/10)) ;
+							$('#hour2').text(hour%10);
+						}
+						
+						if(min < 10){ 
+							$('#minute1').text(0);
+							$('#minute2').text(min);
+						}else{
+							$('#minute1').text(parseInt(min/10));
+							$('#minute2').text(min%10);
+						}
+						
+						if(ss < 10){ 
+							$('#second1').text(0);
+							$('#second2').text(ss);
+						}else{
+							$('#second1').text(parseInt(ss/10));
+							$('#second2').text(ss%10);
+						}
+					
+					
+			},1000);
+	})
+			
+		</script>
+
+	</head>
+
+	<body>
+		
+
+				<div class="banner">
+					<ul class="banner_main">
+						<li>
+							<a href="#"><img src="img/index/banner1.jpg" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/index/banner2.jpg" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/index/banner3.jpg" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/index/banner4.jpg" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/index/banner5.jpg" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/index/banner6.jpg" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="img/index/banner7.jpg" /></a>
+						</li>
+					</ul>
+					<div class="banner_contents">
+						<span id="left">
+						
+					</span>
+
+						<ol class="banner_contents_img">
+							<li>
+								<a href="#"><img src="img/index/banner1.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/banner2.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/banner3.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/banner4.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/banner5.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/banner6.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/banner7.jpg" /></a>
+							</li>
+						</ol>
+						<span id="right">
+						
+						</span>
+
+					</div>
+				</div>
+				<div class="sellpointBg">
+					<div class="sellpoint">
+						<ul>
+							<li class="zheng"><a href="#">100%正品</a></li>
+							<li class="tui"><a href="#">7天无忧退货</a></li>
+							<li class="you"><a href="#">满88包邮（部分特殊产品除外）</a></li>
+						</ul>
+						<a class="message" href="#">下载app 享受首单立减8元优惠</a>
+					</div>
+				</div>
+				
+					
+				
+				<div class="activity">
+					<a href="#"><img src="img/index/activity1.png" /></a>
+					<a href="#"><img src="img/index/activity2.png" /></a>
+					<a href="#"><img style="border-right: 0;" src="img/index/activity3.png" /></a>
+				</div>
+				<div id="content">					
+				<div class="timelimit">
+					<div class="timelimit_title">
+						<b>今日限时购</b>
+						<h4>本场还剩</h4>
+						<div class="time">
+							<span id="hour1">
+					0
+				</span>
+							<span id="hour2">
+					0
+				</span>:
+							<span id="minute1">
+					1
+				</span>
+							<span id="minute2">
+					3
+				</span>:
+							<span id="second1">
+					3
+				</span>
+							<span id="second2">
+					0
+				</span>
+						</div>
+						<a class="enter">进入限时购频道></a>
+					</div>
+					<div class="timelimit_main">
+						<div class="timelimit_left">
+							<dl>
+								<dt><img src="img/index/timelimit1.png"/></dt>
+								<dd>
+									<h3>2014年Cosme大赏最受欢迎的纸尿裤</h3>
+									<h5><b>2件装</b>|moony尤妮佳L 50片/包 2包装 男宝宝用拉拉裤</h5>
+									<div class="price">
+										<b>￥160</b>
+										<span>￥298</span>
+									</div>
+									<div class="bottom">
+										<div class="show"><span class="remain" id="remain1"></span><span class="content"> 剩余<b class="value">115</b></span>
+										</div>
+										<a href="#" class="btn_buy">立即抢购</a>
+									</div>
+
+								</dd>
+
+							</dl>
+							<dl>
+								<dt><img src="img/index/timelimit2.png"/></dt>
+								<dd>
+									<h3>我的时刻 我的世界</h3>
+									<h5>CITIZEN 西铁城 光动能小牛皮表带男表AO999-06B</h5>
+									<div class="price">
+										<b>￥999</b>
+										<span>￥2300</span>
+									</div>
+									<div class="bottom">
+										<div class="show"><span class="remain" id="remain2"></span> <span class="content">剩余<b class="value">83</b>件</span>
+										</div>
+										<a href="#" class="btn_buy">立即抢购</a>
+									</div>
+								</dd>
+							</dl>
+							<dl>
+								<dt><img src="img/index/timelimit3.png"/></dt>
+								<dd>
+									<h3>小朋友肠道健康的小卫士</h3>
+									<h5><b>2件装</b>|Culturelle 康萃乐 婴幼儿益生菌粉 30袋/盒 2盒</h5>
+									<div class="price">
+										<b>￥246</b> <span>￥336</span>
+									</div>
+									<div class="bottom">
+										<div class="show"><span class="remain" id="remain3"></span><span class="content"> 剩余<b class="value">437</b>件</span>
+										</div>
+										<a href="#" class="btn_buy">立即抢购</a>
+									</div>
+								</dd>
+							</dl>
+							<dl>
+								<dt><img src="img/index/timelimit4.png"/></dt>
+								<dd>
+									<h3>轻薄如莎 摄像头保护 防滑防指纹</h3>
+									<h5>MOMAX摩米士iphone6/6s/6plus/6s plus 苹果手机壳套</h5>
+									<div class="price">
+										<b>￥68</b> <span>￥198</span>
+									</div>
+									<div class="bottom">
+										<div class="show"><span class="content">剩余<b class="value">83</b>件</span> <span class="remain" id="remain4"></span>
+										</div>
+										<a href="#" class="btn_buy">立即抢购</a>
+									</div>
+								</dd>
+							</dl>
+
+						</div>
+						<div class="timelimit_right">
+							<a href="#"><img src="img/index/timelimit5.png" /></a>
+						</div>
+					</div>
+				</div>
+			
+				<div class="everyday">
+					<h4>每日上新<span>/每天10点，新品抢鲜</span></h4>
+					<div class="everyday_main">
+						<dl>
+							<dt><a href=""><img src="img/index/everyday1.jpg"/></a>
+						<div class="country">
+							<img src="img/index/jp.png"/>
+						</div>
+					</dt>
+							<dd>
+								<h3><a href="details.html">Salonpas 撒隆巴斯 关节颈肩 舒缓肌肉酸痛</a></h3>
+								<h5><a href="#">一片起效 速效止痛</a></h5>
+								<div class="price">
+									<b>￥119</b> <span>￥250</span><i>4.6折</i>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href=""><img src="img/index/everyday2.jpg"/></a>
+						<div class="country">
+							<img src="img/index/usa.png"/>
+						</div>
+					</dt>
+							<dd>
+								<h3><a href="#">COACH 寇驰 女士单肩斜挎包 </a></h3>
+								<h5><a href="#">美国高端生活方式时尚品牌</a></h5>
+								<div class="price">
+									<b>￥1599</b> <span>￥3950</span><i>4.1折</i>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href=""><img src="img/index/everyday3.jpg"/></a>
+						<div class="country">
+							<img src="img/index/usa.png"/>
+						</div>
+					</dt>
+							<dd>
+								<h3><a href="#">ElizabethArden 伊丽莎白雅顿 显效符合活</a></h3>
+								<h5><a href="#">集万千宠爱 缔造面霜传奇</a></h5>
+								<div class="price">
+									<b>￥189</b> <span>￥450</span><i>4.2折</i>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt><a href=""><img src="img/index/everyday4.jpg"/></a>
+						<div class="country">
+							<img src="img/index/usa.png"/>
+						</div>
+					</dt>
+							<dd>
+								<h3><a href="#">thinkbaby 新克宝贝 不锈钢餐盒 含叉勺 粉丝 </a></h3>
+								<h5><a href="#">宝宝健康餐具 妈妈放心选择</a></h5>
+								<div class="price">
+									<b>￥185</b> <span>￥228</span><i>8.2折</i>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="hot">
+					<h4>热门品牌<span>/全球精选，一网打尽</span></h4>
+					<div class="hot_main">
+						<dl>
+							<dt><img src="img/index/hot1.jpg"/>
+					
+							<img class="hotIcon" src="img/index/hotIcon1.jpg"/>
+						
+					</dt>
+							<dd>
+								<h3>Bubs 澳洲贝儿</h3>
+								<h5>富含羊乳清蛋白更易吸收</h5>
+							</dd>
+						</dl>
+						<dl>
+							<dt><img src="img/index/hot2.jpg"/>
+						
+							<img  class="hotIcon" src="img/index/hotIcon2.jpg"/>
+						
+					</dt>
+							<dd>
+								<h3>JBL</h3>
+								<h5>音乐无极限体验</h5>
+							</dd>
+						</dl>
+						<dl>
+							<dt><img src="img/index/hot3.jpg"/>
+						
+							<img class="hotIcon" src="img/index/hotIcon3.jpg"/>
+						
+					</dt>
+							<dd>
+								<h3>ORIHIRO NIGHT DIET新谷酵素</h3>
+								<h5>健康好酵素，睡着也能瘦</h5>
+							</dd>
+						</dl>
+						<dl>
+							<img style="height: 380px;width: 272px;" src="img/index/hot4.jpg" />
+						</dl>
+					</div>
+				</div>
+				<div class="mother content">
+					<h4><p>母婴专区<span>热搜词:</span></p>
+					<ul>
+						<li><a href="#" class="color">家居出行</a></li>
+						<li><a href="#" class="color">童装童鞋</a></li>
+						<li><a href="#">洗漱护肤</a></li>
+						<li><a href="#">时尚文胸</a></li>
+						<li><a href="#">哺乳喂养</a></li>
+						<li><a href="#" class="color">果泥菜泥</a></li>
+						<li><a href="#" style="border: none;">防妊娠纹</a></li>
+					</ul>
+				<a class="more">更多好货></a>
+					</h4>
+					<div class="content_main">
+						<div class="mother_left content_left">
+							<div class="content_left_tip">
+								<a href="#">大牌奶粉</a>
+								<a href="#">纸尿裤</a>
+								<a href="#" style="margin-right: 0;">洗护喂养</a>
+								<a href="#">营养辅食</a>
+								<a href="#">孕妈专区</a>
+								<a href="#" style="margin-right: 0;">玩具专区</a>
+							</div>
+						</div>
+						<div class="content_middle">
+							<a href="#">
+								<dl>
+									<dt>
+							<h3>宝宝夏日洗护</h3>
+							<h5>买一得二 买就送</h5>
+						</dt>
+									<dd><img src="img/index/mother2.jpg" /></dd>
+								</dl>
+							</a>
+							<a href="#">
+								<dl>
+									<dt>
+							<h3>小正太的潮范童年</h3>
+							<h5>全场满199减50</h5>
+						</dt>
+									<dd><img src="img/index/mother3.jpg" /></dd>
+								</dl>
+							</a>
+							<a href="#">
+								<dl>
+									<dt>
+							<h3>用品N元任选</h3>
+							<h5>最多89元选5件</h5>
+						</dt>
+									<dd><img src="img/index/mother4.jpg" /></dd>
+								</dl>
+							</a>
+							<a href="#">
+								<dl>
+									<dt>
+							<h3>辅食N元任选</h3>
+							<h5>最多98选10件</h5>
+						</dt>
+									<dd><img src="img/index/mother5.jpg" /></dd>
+								</dl>
+							</a>
+						</div>
+						<div class="content_right">
+							<h3>最新热卖</h3>
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<dl>
+											<dt><img src="img/index/motherSell1.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl>
+											<dt><img src="img/index/motherSell2.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl>
+											<dt><img src="img/index/motherSell3.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl style="border-bottom: none;">
+											<dt><img src="img/index/motherSell4.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+									</div>
+									<div class="swiper-slide">
+										<dl>
+											<dt><img src="img/index/motherSell5.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl>
+											<dt><img src="img/index/motherSell6.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl>
+											<dt><img src="img/index/motherSell7.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl style="border-bottom: none;">
+											<dt><img src="img/index/motherSell8.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+									</div>
+									<div class="swiper-slide">
+										<dl>
+											<dt><img src="img/index/motherSell9.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl>
+											<dt><img src="img/index/motherSell10.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl>
+											<dt><img src="img/index/motherSell11.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+										<dl style="border-bottom: none;">
+											<dt><img src="img/index/motherSell12.jpg"/></dt>
+											<dd>
+												<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+												<p><b>￥75</b><span>￥117</span></p>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<!-- 如果需要分页器 -->
+								<div class="swiper-pagination"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="content_hot">
+						<h4>热卖品牌：</h4>
+						<ul>
+							<li>
+								<a href="#"><img src="img/index/motherHot1.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/motherHot2.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/motherHot3.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/motherHot4.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/motherHot5.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/motherHot6.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/motherHot7.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+							<li>
+								<a href="#"><img src="img/index/motherHot8.jpg" /></a>
+								<img class="xin" src="img/index/xin.png"/>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="beauty content">
+						<h4><p>美容彩妆<span>热搜词:</span></p>
+				<ul>
+					<li><a href="#">面霜</a></li>
+					<li><a href="#" >乳液</a></li>
+					<li><a href="#" class="color">马油</a></li>
+					<li><a href="#">香水</a></li>
+					<li><a href="#">护手霜</a></li>
+					<li><a href="#" class="color">科颜氏</a></li>
+					<li><a href="#">洗面奶</a></li>
+					<li><a href="#" style="border: none;">卸妆</a></li>
+				</ul>
+				<a class="more">更多好货></a>
+			</h4>
+						<div class="content_main">
+							<div class="beauty_left content_left">
+								<div class="content_left_tip">
+									<a href="#">基础护肤</a>
+									<a href="#">彩妆香氛</a>
+									<a href="#" style="margin-right: 0;">韩国美妆</a>
+									<a href="#">人气面膜</a>
+									<a href="#">大牌专场</a>
+									<a href="#" style="margin-right: 0;">身体护理</a>
+								</div>
+							</div>
+							<div class="content_middle">
+								<a href="#">
+									<dl>
+										<dt>
+							<h3>约会前的小心机</h3>
+							<h5>YSL明彩笔低至208元</h5>
+						</dt>
+										<dd><img src="img/index/beauty2.jpg" /></dd>
+									</dl>
+								</a>
+								<a href="#">
+									<dl>
+										<dt>
+							<h3>大屏会唱空瓶记</h3>
+							<h5>茵芙纱流金水低至299元</h5>
+						</dt>
+										<dd><img src="img/index/beauty3.jpg" /></dd>
+									</dl>
+								</a>
+								<a href="#">
+									<dl>
+										<dt>
+							<h3>立夏时节多补水</h3>
+							<h5>春雨面膜单片低至7.5元</h5>
+						</dt>
+										<dd><img src="img/index/beauty4.jpg" /></dd>
+									</dl>
+								</a>
+								<a href="#">
+									<dl>
+										<dt>
+							<h3>夏日战痘小分队</h3>
+							<h5>奥尔滨健康水低至319元</h5>
+						</dt>
+										<dd><img src="img/index/beauty5.jpg" /></dd>
+									</dl>
+								</a>
+							</div>
+							<div class="content_right">
+								<h3>最新热卖</h3>
+								<div class="swiper-container">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<dl>
+												<dt><img src="img/index/beautySell1.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>CLINIQUE 倩碧 卓越润肤 天才黄油有油</h5></a></a>
+													<p><b>￥209</b><span>￥295</span></p>
+												</dd>
+											</dl>
+											<dl>
+												<dt><img src="img/index/beautySell2.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>BLACKMORES 澳佳宝 维他命E面霜软膏</h5></a>
+													<p><b>￥85</b><span>￥135</span></p>
+												</dd>
+											</dl>
+											<dl>
+												<dt><img src="img/index/beautySell3.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>banila co 芭妮兰至柔卸妆膏卸妆霜 100</h5></a>
+													<p><b>￥99</b><span>￥199</span></p>
+												</dd>
+											</dl>
+											<dl style="border-bottom: none;">
+												<dt><img src="img/index/beautySell4.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>SNP 熊猫美白补水动物面膜贴 10片/盒</h5></a>
+													<p><b>￥86</b><span>￥199</span></p>
+												</dd>
+											</dl>
+										</div>
+										<div class="swiper-slide">
+											<dl>
+												<dt><img src="img/index/beautySell5.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+											<dl>
+												<dt><img src="img/index/beautySell6.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+											<dl>
+												<dt><img src="img/index/beautySell7.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+											<dl style="border-bottom: none;">
+												<dt><img src="img/index/beautySell8.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+										</div>
+										<div class="swiper-slide">
+											<dl>
+												<dt><img src="img/index/beautySell9.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+											<dl>
+												<dt><img src="img/index/beautySell10.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+											<dl>
+												<dt><img src="img/index/beautySell11.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+											<dl style="border-bottom: none;">
+												<dt><img src="img/index/beautySell12.jpg"/></dt>
+												<dd>
+													<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+													<p><b>￥75</b><span>￥117</span></p>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<!-- 如果需要分页器 -->
+									<div class="swiper-pagination"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="content_hot">
+							<h4>热卖品牌：</h4>
+							<ul>
+								<li>
+									<a href="#"><img src="img/index/beautyHot1.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+								<li>
+									<a href="#"><img src="img/index/beautyHot2.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+								<li>
+									<a href="#"><img src="img/index/beautyHot3.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+								<li>
+									<a href="#"><img src="img/index/beautyHot4.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+								<li>
+									<a href="#"><img src="img/index/beautyHot5.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+								<li>
+									<a href="#"><img src="img/index/beautyHot6.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+								<li>
+									<a href="#"><img src="img/index/beautyHot7.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+								<li>
+									<a href="#"><img src="img/index/beautyHot8.jpg" /></a>
+									<img class="xin" src="img/index/xin.png"/>
+								</li>
+							</ul>
+						</div>
+					</div>
+				<div class="content home">
+					<h4><p>家局生活<span>热搜词:</span></p>
+					<ul>
+						<li><a href="#" class="color">吕</a></li>
+						<li><a href="#" class="color">乳胶枕</a></li>
+						<li><a href="#" class="color">洗发水</a></li>
+						<li><a href="#" >膳魔师</a></li>
+						<li><a href="#" >花王</a></li>
+						<li><a href="#" >凌美</a></li>
+						<li><a href="#" >卫生巾</a></li>
+						<li><a href="#" class="color" style="border: none;">牙膏</a></li>
+					</ul>
+					<a class="more">更多好货></a>
+					</h4>
+					<div class="content_main">
+								<div class="home_left content_left">
+									<div class="content_left_tip">
+										<a href="#">任选专场</a>
+										<a href="#">洗发护发</a>
+										<a href="#" style="margin-right: 0;">女性护理</a>
+										<a href="#">厨房餐饮</a>
+										<a href="#">家装家纺</a>
+										<a href="#" style="margin-right: 0;">家居清洁</a>
+									</div>
+								</div>
+								<div class="content_middle">
+									<a href="#">
+										<dl>
+											<dt>
+							<h3>居家逼格提升指南</h3>
+							<h5>巴黎卡诗299元任选2件</h5>
+						</dt>
+											<dd><img src="img/index/home2.jpg" /></dd>
+										</dl>
+									</a>
+									<a href="#">
+										<dl>
+											<dt>
+							<h3>凑单剁手更过瘾</h3>
+							<h5>满99元立减30元起</h5>
+						</dt>
+											<dd><img src="img/index/home3.jpg" /></dd>
+										</dl>
+									</a>
+									<a href="#">
+										<dl>
+											<dt>
+							<h3>睡饱就是元气少女</h3>
+							<h5>爆款乳胶枕买一送一</h5>
+						</dt>
+											<dd><img src="img/index/home4.jpg" /></dd>
+										</dl>
+									</a>
+									<a href="#">
+										<dl>
+											<dt>
+							<h3>唯有爱与下厨不可辜负</h3>
+							<h5>双立人刀具低至85元</h5>
+						</dt>
+											<dd><img src="img/index/home5.jpg" /></dd>
+										</dl>
+									</a>
+								</div>
+								<div class="content_right">
+									<h3>最新热卖</h3>
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<div class="swiper- slide">
+												<dl>
+													<dt><img src="img/index/homeSell1.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>Ryeo 吕 紫白黑吕 洗发水 10件套 大礼盒</h5></a></a>
+														<p><b>￥358</b><span>￥699</span></p>
+													</dd>
+												</dl>
+												<dl>
+													<dt><img src="img/index/homeSell2.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>BRITA 碧然德 ALUNA 摩登系列滤水壶3.5升</h5></a>
+														<p><b>￥119</b><span>￥299</span></p>
+													</dd>
+												</dl>
+												<dl>
+													<dt><img src="img/index/homeSell3.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>KUMANO COMSMET CS 熊野油</h5></a>
+														<p><b>￥69</b><span>￥129</span></p>
+													</dd>
+												</dl>
+												<dl style="border-bottom: none;">
+													<dt><img src="img/index/homeSell4.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>【6+2只】 BRITA 碧然德Maxfra系列滤水</h5></a>
+														<p><b>￥205</b><span>￥439</span></p>
+													</dd>
+												</dl>
+											</div>
+											<div class="swiper-slide">
+												<dl>
+													<dt><img src="img/index/homeSell5.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+														<p><b>￥75</b><span>￥117</span></p>
+													</dd>
+												</dl>
+												<dl>
+													<dt><img src="img/index/homeSell6.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+														<p><b>￥75</b><span>￥117</span></p>
+													</dd>
+												</dl>
+												<dl>
+													<dt><img src="img/index/homeSell7.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+														<p><b>￥75</b><span>￥117</span></p>
+													</dd>
+												</dl>
+												<dl style="border-bottom: none;">
+													<dt><img src="img/index/homeSell8.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+														<p><b>￥75</b><span>￥117</span></p>
+													</dd>
+												</dl>
+											</div>
+											<div class="swiper-slide">
+												<dl>
+													<dt><img src="img/index/homeSell9.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>Hamilton Beach 汉美驰 便携式慢炖锅</h5></a></a>
+														<p><b>￥239</b><span>￥269</span></p>
+													</dd>
+												</dl>
+												<dl>
+													<dt><img src="img/index/homeSell10.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>PHILPS 飞利浦 干湿两用剃须刀</h5></a>
+														<p><b>￥529</b><span>￥998</span></p>
+													</dd>
+												</dl>
+												<dl>
+													<dt><img src="img/index/homeSell11.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>M小米 智能摄像头 小蚁智能摄像器高清wifi</h5></a>
+														<p><b>￥188</b><span>￥222</span></p>
+													</dd>
+												</dl>
+												<dl style="border-bottom: none;">
+													<dt><img src="img/index/homeSell12.jpg"/></dt>
+													<dd>
+														<a href="#"><h5>LAMY 灵媒 safari 狩猎者 F尖钢笔 德古拉</h5></a>
+														<p><b>￥119</b><span>￥199</span></p>
+													</dd>
+												</dl>
+											</div>
+										</div>
+										<!-- 如果需要分页器 -->
+										<div class="swiper-pagination"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="content_hot">
+								<h4>热卖品牌：</h4>
+								<ul>
+									<li>
+										<a href="#"><img src="img/index/homeHot1.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+									<li>
+										<a href="#"><img src="img/index/homeHot2.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+									<li>
+										<a href="#"><img src="img/index/homeHot3.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+									<li>
+										<a href="#"><img src="img/index/homeHot4.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+									<li>
+										<a href="#"><img src="img/index/homeHot5.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+									<li>
+										<a href="#"><img src="img/index/homeHot6.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+									<li>
+										<a href="#"><img src="img/index/homeHot7.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+									<li>
+										<a href="#"><img src="img/index/homeHot8.jpg" /></a>
+										<img class="xin" src="img/index/xin.png"/>
+									</li>
+								</ul>
+							</div>
+						</div>	
+				<div class="nutrition content">
+			<h4><p>营养保健<span>热搜词:</span></p>
+				<ul>
+					<li><a href="#" >Swisse</a></li>
+					<li><a href="#" >蔓越莓</a></li>
+					<li><a href="#" >鱼油</a></li>
+					<li><a href="#">大麦若叶</a></li>
+					<li><a href="#" class="color">减肥瘦身</a></li>
+					<li><a href="#" class="color">澳佳宝</a></li>
+					<li><a href="#">男性保健</a></li>
+					<li><a href="#" style="border: none;">美容养颜</a></li>
+				</ul>
+				<a class="more">更多好货></a>
+			</h4>
+			<div class="content_main">
+				<div class="nutrition_left content_left">
+					<div class="content_left_tip">
+						<a href="#">清仓馆</a>
+						<a href="#">长辈馆</a>
+						<a href="#" style="margin-right: 0;">男性馆</a>
+						<a href="#">滋补馆</a>
+						<a href="#">美容馆</a>
+						<a href="#" style="margin-right: 0;">瘦身馆</a>
+					</div>
+				</div>
+				<div class="content_middle">
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>日本SOSME大赏</h3>
+							<h5>买1得2</h5>
+						</dt>
+							<dd><img src="img/index/nutrition2.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>让容颜惊艳时光</h3>
+							<h5>胶原蛋白低至15.6元/瓶</h5>
+						</dt>
+							<dd><img src="img/index/nutrition3.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>自然之宝+诺奥+耐趣</h3>
+							<h5>满199减50，满299减100</h5>
+						</dt>
+							<dd><img src="img/index/nutrition4.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>高考加油站</h3>
+							<h5>满199减50，满299减100</h5>
+						</dt>
+							<dd><img src="img/index/nutrition5.jpg" /></dd>
+						</dl>
+					</a>
+				</div>
+				<div class="content_right">
+					<h3>最新热卖</h3>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/nutritionSell1.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Doppelherz 双心叶黄素胶囊 30粒/盒 2盒</h5></a></a>
+										<p><b>￥209</b><span>￥295</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/nutritionSell2.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>BLACKMORES 澳佳宝 维他命E面霜软膏</h5></a>
+										<p><b>￥85</b><span>￥135</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/nutritionSell3.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>banila co 芭妮兰至柔卸妆膏卸妆霜 100</h5></a>
+										<p><b>￥99</b><span>￥199</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/nutritionSell4.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>SNP 熊猫美白补水动物面膜贴 10片/盒</h5></a>
+										<p><b>￥86</b><span>￥199</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/nutritionSell5.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/nutritionSell6.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/nutritionSell7.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/nutritionSell8.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/nutritionSell9.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Doppelherz 双心叶黄素胶囊 30粒/盒 2盒</h5></a></a>
+										<p><b>￥99</b><span>￥358</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/nutritionSell10.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>FatBlaster 菲拉斯德神奇椰子/750毫升/瓶</h5></a>
+										<p><b>￥198</b><span>￥498</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/nutritionSell11.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Swisse 高含量西芹籽精华 50粒 2瓶装</h5></a>
+										<p><b>￥149</b><span>￥360</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/nutritionSell12.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>GNC 健安喜 葡萄籽胶囊 300毫克 100粒/</h5></a>
+										<p><b>￥209</b><span>￥338</span></p>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="content_hot">
+				<h4>热卖品牌：</h4>
+				<ul>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot1.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot2.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot3.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot4.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot5.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot6.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot7.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/nutritionHot8.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+				</ul>
+			</div>
+		</div>	
+				<div class="cate content">
+					<h4><p>环球美食<span>热搜词:</span></p>
+						<ul>
+							<li><a href="#" class="color">德运</a></li>
+							<li><a href="#" >咖啡</a></li>
+							<li><a href="#" class="color">巧克力</a></li>
+							<li><a href="#">橄榄油</a></li>
+							<li><a href="#" >酒水</a></li>
+							<li><a href="#" >坚果</a></li>
+							<li><a href="#" class="color">蜂蜜黄油</a></li>
+							<li><a href="#" style="border: none;">水果</a></li>
+						</ul>
+						<a class="more">更多好货></a>
+					</h4>
+			<div class="content_main">
+				<div class="cate_left content_left">
+					<div class="content_left_tip">
+						<a href="#">糖巧克力</a>
+						<a href="#">咖啡饮品</a>
+						<a href="#" style="margin-right: 0;">果干坚果</a>
+						<a href="#">饼干糕点</a>
+						<a href="#">休闲零食</a>
+						<a href="#" style="margin-right: 0;">生鲜水果</a>
+					</div>
+				</div>
+				<div class="content_middle">
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>思密达零食大赏</h3>
+							<h5>薯片来锐税，低至2元/包</h5>
+						</dt>
+							<dd><img src="img/index/cate2.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>“水”来阻挡岁月</h3>
+							<h5>保“价”护航每口半分钱</h5>
+						</dt>
+							<dd><img src="img/index/cate3.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>保税美食节</h3>
+							<h5>低至99元10件</h5>
+						</dt>
+							<dd><img src="img/index/cate4.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>考拉咖啡馆</h3>
+							<h5>日本/瑞士/比利时联合呈现</h5>
+						</dt>
+							<dd><img src="img/index/cate5.jpg" /></dd>
+						</dl>
+					</a>
+				</div>
+				<div class="content_right">
+					<h3>最新热卖</h3>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/cateSell1.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Doppelherz 双心叶黄素胶囊 30粒/盒 2盒</h5></a></a>
+										<p><b>￥209</b><span>￥295</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/cateSell2.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>BLACKMORES 澳佳宝 维他命E面霜软膏</h5></a>
+										<p><b>￥85</b><span>￥135</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/cateSell3.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>banila co 芭妮兰至柔卸妆膏卸妆霜 100</h5></a>
+										<p><b>￥99</b><span>￥199</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/cateSell4.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>SNP 熊猫美白补水动物面膜贴 10片/盒</h5></a>
+										<p><b>￥86</b><span>￥199</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/cateSell5.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/cateSell6.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/cateSell7.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/cateSell8.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/cateSell9.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>maltesers 麦提莎 牛奶巧克力礼盒装360</h5></a></a>
+										<p><b>￥160</b><span>￥290</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/cateSell10.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Devondate 德运 高钙全脂牛奶粉 1000克/</h5></a>
+										<p><b>￥128</b><span>￥290</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/cateSell11.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Devondate 德运 高钙全脂成人牛奶粉 1000克</h5></a>
+										<p><b>￥64</b><span>￥150</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/cateSell12.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Galatine 佳乐腚 意大利原装生产牛乳糖</h5></a>
+										<p><b>￥22</b><span>￥49</span></p>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content_hot">
+				<h4>热卖品牌：</h4>
+				<ul>
+					<li>
+						<a href="#"><img src="img/index/cateHot1.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/cateHot2.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/cateHot3.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/cateHot4.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/cateHot5.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/cateHot6.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/cateHot7.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/cateHot8.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+				</ul>
+			</div>
+			</div>
+					<div class="clothes content">
+			<h4><p>服饰鞋包<span>热搜词:</span></p>
+				<ul>
+					<li><a href="#" class="color">FURLA</a></li>
+					<li><a href="#" class="color">宋钟基</a></li>
+					<li><a href="#" class="color">珠宝</a></li>
+					<li><a href="#" class="color">BV</a></li>
+					<li><a href="#" >双肩包</a></li>
+					<li><a href="#" >国母包</a></li>
+					<li><a href="#" class="color">MK</a></li>
+					<li><a href="#" class="color" style="border: none;">COACH</a></li>
+				</ul>
+				<a class="more">更多好货></a>
+			</h4>
+			<div class="content_main">
+				<div class="clothes_left content_left">
+					<div class="content_left_tip">
+						<a href="#">大牌女包</a>
+						<a href="#">品质男包</a>
+						<a href="#" style="margin-right: 0;">手表配件</a>
+						<a href="#">珠宝饰品</a>
+						<a href="#">时尚鞋靴</a>
+						<a href="#" style="margin-right: 0;">大牌服装</a>
+					</div>
+				</div>
+				<div class="content_middle">
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>职场女包搭配指南</h3>
+							<h5>流行女包399元起</h5>
+						</dt>
+							<dd><img src="img/index/clothes2.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>夏日清凉沙滩包</h3>
+							<h5>清新约会价279元</h5>
+						</dt>
+							<dd><img src="img/index/clothes3.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>婚礼上的完美嘉宾</h3>
+							<h5>优雅行头399元起</h5>
+						</dt>
+							<dd><img src="img/index/clothes4.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>只想和你说520</h3>
+							<h5>大牌手表低至3折起</h5>
+						</dt>
+							<dd><img src="img/index/clothes5.jpg" /></dd>
+						</dl>
+					</a>
+				</div>
+				<div class="content_right">
+					<h3>最新热卖</h3>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/clothesSell1.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Fjallraver 瑞典北极狐 Kanken 迷你双肩</h5></a></a>
+										<p><b>￥449</b><span>￥559</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/clothesSell2.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>SWAROVSKI 施华洛世奇 经典款秘镶防水</h5></a>
+										<p><b>￥799</b><span>￥1700</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/clothesSell3.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>U.S. POLO ASSN. 美国马球协会男士</h5></a>
+										<p><b>￥249</b><span>￥399</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/clothesSell4.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>PANDORA 潘多拉 薰衣草色雏菊草甸</h5></a>
+										<p><b>￥379</b><span>￥498</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/clothesSell5.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/clothesSell6.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/clothesSell7.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/clothesSell8.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/clothesSell9.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>maltesers 麦提莎 牛奶巧克力礼盒装360</h5></a></a>
+										<p><b>￥160</b><span>￥290</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/clothesSell10.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Devondate 德运 高钙全脂牛奶粉 1000克/</h5></a>
+										<p><b>￥128</b><span>￥290</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/clothesSell11.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Devondate 德运 高钙全脂成人牛奶粉 1000克</h5></a>
+										<p><b>￥64</b><span>￥150</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/clothesSell12.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Galatine 佳乐腚 意大利原装生产牛乳糖</h5></a>
+										<p><b>￥22</b><span>￥49</span></p>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content_hot">
+				<h4>热卖品牌：</h4>
+				<ul>
+					<li>
+						<a href="#"><img src="img/index/clothesHot1.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/clothesHot2.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/clothesHot3.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/clothesHot4.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/clothesHot5.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/clothesHot6.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/clothesHot7.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/clothesHot8.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+				</ul>
+			</div>
+			</div>
+					<div class="digital content">
+			<h4><p>数码家电<span>热搜词:</span></p>
+				<ul>
+					<li><a href="#" class="color">iPhone</a></li>
+					<li><a href="#" class="color">港币</a></li>
+					<li><a href="#" class="color">空气净化</a></li>
+					<li><a href="#" >电动牙刷</a></li>
+					<li><a href="#" >耳机</a></li>
+					<li><a href="#" >音箱</a></li>
+					<li><a href="#" >剃须刀</a></li>
+					<li><a href="#" style="border: none;">原汁机</a></li>
+				</ul>
+				<a class="more">更多好货></a>
+			</h4>
+			<div class="content_main">
+				<div class="digital_left content_left">
+					<div class="content_left_tip">
+						<a href="#">个户电器</a>
+						<a href="#">生活电器</a>
+						<a href="#" style="margin-right: 0;">厨房电器</a>
+						<a href="#">3C数码</a>
+						<a href="#">办公学习</a>
+						<a href="#" style="margin-right: 0;">影音娱乐</a>
+					</div>
+				</div>
+				<div class="content_middle">
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>数码税费狂降8.1%</h3>
+							<h5>飞利浦剃须刀税后直降107元</h5>
+						</dt>
+							<dd><img src="img/index/digital2.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>办公桌就要镇压全场</h3>
+							<h5>JBL蓝牙迷你音箱低至219元</h5>
+						</dt>
+							<dd><img src="img/index/digital3.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>Enjoy工作&学习</h3>
+							<h5>毕加索笔低至69元</h5>
+						</dt>
+							<dd><img src="img/index/digital4.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>纯净Air任你造</h3>
+							<h5>三星空气净化器低至799元</h5>
+						</dt>
+							<dd><img src="img/index/digital5.jpg" /></dd>
+						</dl>
+					</a>
+				</div>
+				<div class="content_right">
+					<h3>最新热卖</h3>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/digitalSell1.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Fjallraver 瑞典北极狐 Kanken 迷你双肩</h5></a></a>
+										<p><b>￥449</b><span>￥559</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/digitalSell2.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>SWAROVSKI 施华洛世奇 经典款秘镶防水</h5></a>
+										<p><b>￥799</b><span>￥1700</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/digitalSell3.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>U.S. POLO ASSN. 美国马球协会男士</h5></a>
+										<p><b>￥249</b><span>￥399</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/digitalSell4.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>PANDORA 潘多拉 薰衣草色雏菊草甸</h5></a>
+										<p><b>￥379</b><span>￥498</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/digitalSell5.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/digitalSell6.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/digitalSell7.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/digitalSell8.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/digitalSell9.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Hamilton Beach 汉美驰 便携式慢炖锅</h5></a></a>
+										<p><b>￥239</b><span>￥269</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/digitalSell10.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>PHILPS 飞利浦 干湿两用剃须刀</h5></a>
+										<p><b>￥529</b><span>￥998</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/digitalSell11.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>M小米 智能摄像头 小蚁智能摄像器高清wifi</h5></a>
+										<p><b>￥188</b><span>￥222</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/digitalSell12.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>LAMY 灵媒 safari 狩猎者 F尖钢笔 德古拉</h5></a>
+										<p><b>￥119</b><span>￥199</span></p>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content_hot">
+				<h4>热卖品牌：</h4>
+				<ul>
+					<li>
+						<a href="#"><img src="img/index/digitalHot1.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/digitalHot2.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/digitalHot3.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/digitalHot4.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/digitalHot5.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/digitalHot6.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/digitalHot7.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/digitalHot8.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+				</ul>
+			</div>
+			</div>
+					<div class="overseas content">
+			<h4><p>海外直邮<span>热搜词:</span></p>
+				<ul>
+					<li><a href="#" class="color">飞利浦</a></li>
+					<li><a href="#" class="color">DW</a></li>
+					<li><a href="#" class="color">CITIZEN</a></li>
+					<li><a href="#" class="color">beats</a></li>
+					<li><a href="#" >zippo</a></li>
+					<li><a href="#" >iRobot</a></li>
+					<li><a href="#" >手表</a></li>
+					<li><a href="#" class="color" style="border: none;">音像</a></li>
+				</ul>
+				<a class="more">更多好货></a>
+			</h4>
+			<div class="content_main">
+				<div class="overseas_left content_left">
+					<div class="content_left_tip">
+						<a href="#">母婴专区</a>
+						<a href="#">电子生活</a>
+						<a href="#" style="margin-right: 0;">日常家居</a>
+						<a href="#">营养保健</a>
+						<a href="#">大牌手表</a>
+						<a href="#" style="margin-right: 0;">礼品配饰</a>
+					</div>
+				</div>
+				<div class="content_middle">
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>腕间大牌合约惠</h3>
+							<h5>潘多拉市场价4折起</h5>
+						</dt>
+							<dd><img src="img/index/overseas2.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>打造品质新境界</h3>
+							<h5>电动牙刷头单件只需56元</h5>
+						</dt>
+							<dd><img src="img/index/overseas3.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>拼赢绿茶婊必杀技</h3>
+							<h5>限时3.6折起</h5>
+						</dt>
+							<dd><img src="img/index/overseas4.jpg" /></dd>
+						</dl>
+					</a>
+					<a href="#">
+						<dl>
+							<dt>
+							<h3>这个时代听你的</h3>
+							<h5>Beats粉/紫/灰登陆</h5>
+						</dt>
+							<dd><img src="img/index/overseas5.jpg" /></dd>
+						</dl>
+					</a>
+				</div>
+				<div class="content_right">
+					<h3>最新热卖</h3>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/overseasSell1.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>BRAUN 博朗 儿童耳温计红外线耳温抢</h5></a></a>
+										<p><b>￥279</b><span>￥576</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/overseasSell2.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>GNC 健安喜 Mega Men Prostate 保健</h5></a>
+										<p><b>￥119</b><span>￥299</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/overseasSell3.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>GNC 健安喜 女士复合维他命 90粒/盒 </h5></a>
+										<p><b>￥199</b><span>￥339</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/overseasSell4.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>PHILPS 飞利浦终极版 Flexcare型声波电</h5></a>
+										<p><b>￥999</b><span>￥1899</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/overseasSell5.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/overseasSell6.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/overseasSell7.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/overseasSell8.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>ROBERTSONS 罗拔臣 英国草莓果酱3周</h5></a>
+										<p><b>￥75</b><span>￥117</span></p>
+									</dd>
+								</dl>
+							</div>
+							<div class="swiper-slide">
+								<dl>
+									<dt><img src="img/index/overseasSell9.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>Hamilton Beach 汉美驰 便携式慢炖锅</h5></a></a>
+										<p><b>￥239</b><span>￥269</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/overseasSell10.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>PHILPS 飞利浦 干湿两用剃须刀</h5></a>
+										<p><b>￥529</b><span>￥998</span></p>
+									</dd>
+								</dl>
+								<dl>
+									<dt><img src="img/index/overseasSell11.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>M小米 智能摄像头 小蚁智能摄像器高清wifi</h5></a>
+										<p><b>￥188</b><span>￥222</span></p>
+									</dd>
+								</dl>
+								<dl style="border-bottom: none;">
+									<dt><img src="img/index/overseasSell12.jpg"/></dt>
+									<dd>
+										<a href="#"><h5>LAMY 灵媒 safari 狩猎者 F尖钢笔 德古拉</h5></a>
+										<p><b>￥119</b><span>￥199</span></p>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content_hot">
+				<h4>热卖品牌：</h4>
+				<ul>
+					<li>
+						<a href="#"><img src="img/index/overseasHot1.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/overseasHot2.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/overseasHot3.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/overseasHot4.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/overseasHot5.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/overseasHot6.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/overseasHot7.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+					<li>
+						<a href="#"><img src="img/index/overseasHot8.jpg" /></a>
+						<img class="xin" src="img/index/xin.png"/>
+					</li>
+				</ul>
+			</div>
+			</div>
+			</div>
+					<div class="like">
+								<h4>猜你喜欢<span>根据你的浏览记录推荐的商品</span></h4>
+								<div class="like_main">
+									<dl>
+										<dt><img src="img/index/like1.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|HiPP喜宝 有机益生菌奶粉 5段/2+1</h5>
+											<h6>今日特卖，限时购买省39元</h6>
+											<div class="price">
+												<b><span>￥</span>336</b>
+												<span>￥600</span>
+												<i>2414人已评价</i>
+											</div>
+										</dd>
+									</dl>
+									<dl>
+										<dt><img src="img/index/like2.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|HiPP喜宝 有机益生菌奶粉 3桶</h5>
+											<h6>立省39元</h6>
+											<div class="price">
+												<b><span>￥</span>339</b>
+												<span>￥536</span>
+												<i>2076人已评价</i>
+											</div>
+										</dd>
+									</dl>
+									<dl>
+										<dt><img src="img/index/like3.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|Aptamil 德国爱他美 婴儿奶粉 4段/1</h5>
+											<h6>今日特卖，限时购买省121元</h6>
+											<div class="price">
+												<b><span>￥</span>295</b>
+												<span>￥569</span>
+												<i>10419人已评价</i>
+											</div>
+										</dd>
+									</dl>
+									<dl style="border-right: none;">
+										<dt><img src="img/index/like4.jpg"/></dt>
+										<dd>
+											<h5><b>三件装</b>|HiPP喜宝 有机益生菌奶粉 3段/600</h5>
+											<h6>立省39元</h6>
+											<div class="price">
+												<b><span>￥</span>349</b>
+												<span>￥600</span>
+												<i>1246人已评价</i>
+											</div>
+										</dd>
+									</dl>
+
+								</div>
+							</div>
+					<div class="broadside">
+						<img src="img/index/broadside1.png"/>	
+						<ul>
+							<li class="blod"><a >今日限时购</a></li>
+							<li class="blod"><a >每日上新</a></li>
+							<li class="blod"><a >热门品牌</a></li>
+							<li><a >母婴专区</a></li>
+							<li><a >美容彩妆</a></li>
+							<li><a >家居生活</a></li>
+							<li><a >营养保健</a></li>
+							<li><a >环球美食</a></li>
+							<li><a >服饰鞋包</a></li>
+							<li><a >数码家电</a></li>
+							<li><a >海外直邮</a></li>
+						</ul>
+						<img src="img/index/broadside2.png"/>
+					</div>
+					<script src="js/banner.js" type="text/javascript" charset="utf-8"></script>
+					<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+					<script type="text/javascript">
+						$(window).scroll(function(){
+								 if($(this).scrollTop()>698){
+							       $(".sidebar").show();
+							       $(".sidebar").css({
+							       	  position: 'fixed',
+							       	  top:'36%',
+							       })
+							       	
+							      
+							      }else{
+							      	 $(".sidebar").hide();
+							      	 $(".sidebar").css({
+							       	  position: 'absolute',
+							       	  top:'698px',
+							       })
+							      }
+							})
+					</script>	
+	</body>
+
+</html>
